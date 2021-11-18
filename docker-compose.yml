@@ -3,7 +3,7 @@ version: '3.3'
 services:
   zookeeper:
     restart: always
-    image: "zookeeper:3.5"
+    image: "zookeeper:3.7"
     ports:
       - "2181:2181"
     environment:
