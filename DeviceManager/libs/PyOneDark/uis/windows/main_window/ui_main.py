@@ -16,23 +16,23 @@
 
 # IMPORT PACKAGES AND MODULES
 # ///////////////////////////////////////////////////////////////
-from core.functions import Functions
+from ....core.functions import Functions
 
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
-from qt_core import *
+from ....qt_core import *
 
 # IMPORT SETTINGS
 # ///////////////////////////////////////////////////////////////
-from core.json_settings import Settings
+from ....core.json_settings import Settings
 
 # IMPORT THEME COLORS
 # ///////////////////////////////////////////////////////////////
-from core.json_themes import Themes
+from ....core.json_themes import Themes
 
 # IMPORT PY ONE DARK WIDGETS
 # ///////////////////////////////////////////////////////////////
-from widgets import *
+from ....widgets import *
 
 # IMPORT SETUP MAIN WINDOW
 # ///////////////////////////////////////////////////////////////
@@ -40,15 +40,15 @@ from .setup_main_window import *
 
 # IMPORT MAIN WINDOW PAGES / AND SIDE BOXES FOR APP
 # ///////////////////////////////////////////////////////////////
-from uis.pages.ui_main_pages import Ui_MainPages
+from ....uis.pages.ui_main_pages import Ui_MainPages
 
 # RIGHT COLUMN
 # ///////////////////////////////////////////////////////////////
-from uis.columns.ui_right_column import Ui_RightColumn
+from ....uis.columns.ui_right_column import Ui_RightColumn
 
 # CREDITS
 # ///////////////////////////////////////////////////////////////
-from widgets.py_credits_bar.py_credits import PyCredits
+from ....widgets.py_credits_bar.py_credits import PyCredits
 
 # PY WINDOW
 # ///////////////////////////////////////////////////////////////

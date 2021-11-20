@@ -16,7 +16,7 @@
 
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
-from qt_core import *
+from ...qt_core import *
 
 # IMPORT CLOSE BUTTON
 # ///////////////////////////////////////////////////////////////
@@ -28,7 +28,7 @@ from .py_icon import *
 
 # IMPORT LEFT COLUMN
 # ///////////////////////////////////////////////////////////////
-from uis.columns.ui_left_column import Ui_LeftColumn
+from ...uis.columns.ui_left_column import Ui_LeftColumn
 
 
 class PyLeftColumn(QWidget):

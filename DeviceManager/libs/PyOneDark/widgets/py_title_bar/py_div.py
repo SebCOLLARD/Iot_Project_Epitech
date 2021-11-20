@@ -16,7 +16,7 @@
 
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
-from qt_core import *
+from ...qt_core import *
 
 # CUSTOM LEFT MENU
 # ///////////////////////////////////////////////////////////////
@@ -25,7 +25,7 @@ class PyDiv(QWidget):
         super().__init__()
 
         self.layout = QHBoxLayout(self)
-        self.layout.setContentsMargins(0,5,0,5)
+        self.layout.setContentsMargins(0, 5, 0, 5)
         self.frame_line = QFrame()
         self.frame_line.setStyleSheet(f"background: {color};")
         self.frame_line.setMaximumWidth(1)

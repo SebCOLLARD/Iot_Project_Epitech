@@ -16,11 +16,11 @@
 
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
-from qt_core import *
+from ...qt_core import *
 
 # STYLE
 # ///////////////////////////////////////////////////////////////
-style = '''
+style = """
 QLineEdit {{
 	background-color: {_bg_color};
 	border-radius: {_radius}px;
@@ -35,22 +35,22 @@ QLineEdit:focus {{
 	border: {_border_size}px solid {_context_color};
     background-color: {_bg_color_active};
 }}
-'''
+"""
 
 # PY PUSH BUTTON
 # ///////////////////////////////////////////////////////////////
 class PyLineEdit(QLineEdit):
     def __init__(
-        self, 
-        text = "",
-        place_holder_text = "",
-        radius = 8,
-        border_size = 2,
-        color = "#FFF",
-        selection_color = "#FFF",
-        bg_color = "#333",
-        bg_color_active = "#222",
-        context_color = "#00ABE8"
+        self,
+        text="",
+        place_holder_text="",
+        radius=8,
+        border_size=2,
+        color="#FFF",
+        selection_color="#FFF",
+        bg_color="#333",
+        bg_color_active="#222",
+        context_color="#00ABE8",
     ):
         super().__init__()
 
@@ -68,7 +68,7 @@ class PyLineEdit(QLineEdit):
             selection_color,
             bg_color,
             bg_color_active,
-            context_color
+            context_color,
         )
 
     # SET STYLESHEET
@@ -80,16 +80,16 @@ class PyLineEdit(QLineEdit):
         selection_color,
         bg_color,
         bg_color_active,
-        context_color
+        context_color,
     ):
         # APPLY STYLESHEET
         style_format = style.format(
-            _radius = radius,
-            _border_size = border_size,           
-            _color = color,
-            _selection_color = selection_color,
-            _bg_color = bg_color,
-            _bg_color_active = bg_color_active,
-            _context_color = context_color
+            _radius=radius,
+            _border_size=border_size,
+            _color=color,
+            _selection_color=selection_color,
+            _bg_color=bg_color,
+            _bg_color_active=bg_color_active,
+            _context_color=context_color,
         )
         self.setStyleSheet(style_format)

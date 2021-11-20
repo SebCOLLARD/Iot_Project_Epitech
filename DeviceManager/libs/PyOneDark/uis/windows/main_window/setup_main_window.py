@@ -16,26 +16,26 @@
 
 # IMPORT PACKAGES AND MODULES
 # ///////////////////////////////////////////////////////////////
-from widgets.py_table_widget.py_table_widget import PyTableWidget
+from ....widgets.py_table_widget.py_table_widget import PyTableWidget
 from .functions_main_window import *
 import sys
 import os
 
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
-from qt_core import *
+from ....qt_core import *
 
 # IMPORT SETTINGS
 # ///////////////////////////////////////////////////////////////
-from core.json_settings import Settings
+from ....core.json_settings import Settings
 
 # IMPORT THEME COLORS
 # ///////////////////////////////////////////////////////////////
-from core.json_themes import Themes
+from ....core.json_themes import Themes
 
 # IMPORT PY ONE DARK WIDGETS
 # ///////////////////////////////////////////////////////////////
-from widgets import *
+from ....widgets import *
 
 # LOAD UI MAIN
 # ///////////////////////////////////////////////////////////////

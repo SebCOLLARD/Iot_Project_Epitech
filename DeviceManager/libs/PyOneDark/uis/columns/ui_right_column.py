@@ -16,7 +16,7 @@
 
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
-from qt_core import *
+from ...qt_core import *
 
 
 class Ui_RightColumn(object):
@@ -98,20 +98,31 @@ class Ui_RightColumn(object):
 
         self.main_pages_layout.addWidget(self.menus)
 
-
         self.retranslateUi(RightColumn)
 
         self.menus.setCurrentIndex(1)
 
-
         QMetaObject.connectSlotsByName(RightColumn)
+
     # setupUi
 
     def retranslateUi(self, RightColumn):
-        RightColumn.setWindowTitle(QCoreApplication.translate("RightColumn", u"Form", None))
-        self.label_1.setText(QCoreApplication.translate("RightColumn", u"Menu 1 - Right Menu", None))
-        self.label_2.setText(QCoreApplication.translate("RightColumn", u"Menu 2 - Right Menu", None))
-        self.label_3.setText(QCoreApplication.translate("RightColumn", u"This is just an example menu.\n"
-"Add Qt Widgets or your custom widgets here.", None))
-    # retranslateUi
+        RightColumn.setWindowTitle(
+            QCoreApplication.translate("RightColumn", u"Form", None)
+        )
+        self.label_1.setText(
+            QCoreApplication.translate("RightColumn", u"Menu 1 - Right Menu", None)
+        )
+        self.label_2.setText(
+            QCoreApplication.translate("RightColumn", u"Menu 2 - Right Menu", None)
+        )
+        self.label_3.setText(
+            QCoreApplication.translate(
+                "RightColumn",
+                u"This is just an example menu.\n"
+                "Add Qt Widgets or your custom widgets here.",
+                None,
+            )
+        )
 
+    # retranslateUi
