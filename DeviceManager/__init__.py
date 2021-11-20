@@ -1,1 +1,1 @@
-from .devices import FlowSensor, FluidSensor, InkSensor, SubstanceSensor
+from .devices import FlowSensor, FluidSensor, InkSensor, SubstanceSensor, LightSensor
