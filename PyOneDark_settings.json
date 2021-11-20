@@ -3,7 +3,7 @@
     "version": "v0.0.1",
     "copyright": "Epitech 4th year students",
     "year": 2021,
-    "theme_name": "bright_theme",
+    "theme_name": "default",
     "custom_title_bar": true,
     "startup_size": [
         1400,

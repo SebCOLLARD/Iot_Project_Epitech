@@ -1,24 +1,24 @@
 import sys
 import os
 
-from .libs.PyOneDark.uis.windows.main_window.functions_main_window import *
+from ..libs.PyOneDark.uis.windows.main_window.functions_main_window import *
 
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
-from .libs.PyOneDark.qt_core import *
+from ..libs.PyOneDark.qt_core import *
 
 # IMPORT SETTINGS
 # ///////////////////////////////////////////////////////////////
-from .libs.PyOneDark.core.json_settings import Settings
+from ..libs.PyOneDark.core.json_settings import Settings
 
 # IMPORT PY ONE DARK WINDOWS
 # ///////////////////////////////////////////////////////////////
 # MAIN WINDOW
-from .libs.PyOneDark.uis.windows.main_window import *
+from ..libs.PyOneDark.uis.windows.main_window import *
 
 # IMPORT PY ONE DARK WIDGETS
 # ///////////////////////////////////////////////////////////////
-from .libs.PyOneDark.widgets import *
+from ..libs.PyOneDark.widgets import *
 
 # ADJUST QT FONT DPI FOR HIGHT SCALE AN 4K MONITOR
 # ///////////////////////////////////////////////////////////////
