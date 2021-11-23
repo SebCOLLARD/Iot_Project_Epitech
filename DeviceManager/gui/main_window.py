@@ -59,92 +59,23 @@ class MainWindow(QMainWindow):
         # GET BT CLICKED
         btn = SetupMainWindow.setup_btns(self)
 
-        # Remove Selection If Clicked By "btn_close_left_column"
-        if btn.objectName() != "btn_settings":
-            self.ui.left_menu.deselect_all_tab()
-
-        # Get Title Bar Btn And Reset Active
-        top_settings = MainFunctions.get_title_bar_btn(self, "btn_top_settings")
-        top_settings.set_active(False)
-
         # LEFT MENU
-        # ///////////////////////////////////////////////////////////////
+        # /////////////////////////////////////////////////////////////
 
-        # HOME BTN
-        if btn.objectName() == "btn_home":
-            # Select Menu
+        # Open Light sensors page
+        if btn.objectName() == "btn_light":
             self.ui.left_menu.select_only_one(btn.objectName())
+            MainFunctions.set_page(self, self.ui.load_pages.page_light)
 
-            # Load Page 1
-            MainFunctions.set_page(self, self.ui.load_pages.page_1)
-
-        # WIDGETS BTN
-        if btn.objectName() == "btn_widgets":
-            # Select Menu
+        # Open Temperature sensors page
+        if btn.objectName() == "btn_temperature":
             self.ui.left_menu.select_only_one(btn.objectName())
+            MainFunctions.set_page(self, self.ui.load_pages.page_temperature)
 
-            # Load Page 2
-            MainFunctions.set_page(self, self.ui.load_pages.page_2)
-
-        # LOAD USER PAGE
-        if btn.objectName() == "btn_add_user":
-            # Select Menu
+        # Open Fluid sensors page
+        if btn.objectName() == "btn_fluid":
             self.ui.left_menu.select_only_one(btn.objectName())
-
-            # Load Page 3
-            MainFunctions.set_page(self, self.ui.load_pages.page_3)
-
-        # BOTTOM INFORMATION
-        if btn.objectName() == "btn_info":
-            # CHECK IF LEFT COLUMN IS VISIBLE
-            if not MainFunctions.left_column_is_visible(self):
-                self.ui.left_menu.select_only_one_tab(btn.objectName())
-
-                # Show / Hide
-                MainFunctions.toggle_left_column(self)
-                self.ui.left_menu.select_only_one_tab(btn.objectName())
-            else:
-                if btn.objectName() == "btn_close_left_column":
-                    self.ui.left_menu.deselect_all_tab()
-                    # Show / Hide
-                    MainFunctions.toggle_left_column(self)
-
-                self.ui.left_menu.select_only_one_tab(btn.objectName())
-
-            # Change Left Column Menu
-            if btn.objectName() != "btn_close_left_column":
-                MainFunctions.set_left_column_menu(
-                    self,
-                    menu=self.ui.left_column.menus.menu_2,
-                    title="Info tab",
-                    icon_path=Functions.set_svg_icon("icon_info.svg"),
-                )
-
-        # SETTINGS LEFT
-        if (
-            btn.objectName() == "btn_settings"
-            or btn.objectName() == "btn_close_left_column"
-        ):
-            # CHECK IF LEFT COLUMN IS VISIBLE
-            if not MainFunctions.left_column_is_visible(self):
-                # Show / Hide
-                MainFunctions.toggle_left_column(self)
-                self.ui.left_menu.select_only_one_tab(btn.objectName())
-            else:
-                if btn.objectName() == "btn_close_left_column":
-                    self.ui.left_menu.deselect_all_tab()
-                    # Show / Hide
-                    MainFunctions.toggle_left_column(self)
-                self.ui.left_menu.select_only_one_tab(btn.objectName())
-
-            # Change Left Column Menu
-            if btn.objectName() != "btn_close_left_column":
-                MainFunctions.set_left_column_menu(
-                    self,
-                    menu=self.ui.left_column.menus.menu_1,
-                    title="Settings Left Column",
-                    icon_path=Functions.set_svg_icon("icon_settings.svg"),
-                )
+            MainFunctions.set_page(self, self.ui.load_pages.page_fluid)
 
         # TITLE BAR MENU
         # ///////////////////////////////////////////////////////////////
