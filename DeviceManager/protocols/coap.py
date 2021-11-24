@@ -1,12 +1,8 @@
-import logging
-
 from coapthon.client.helperclient import HelperClient
 from coapthon.messages.message import Message
 from coapthon import defines
 
 from ..config import THINGSBOARD_URL, COAP_PORT
-
-logging.basicConfig(level=logging.DEBUG)
 
 
 class CoapClient:
