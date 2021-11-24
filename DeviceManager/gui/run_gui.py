@@ -1,7 +1,10 @@
 import os
 import sys
 
+from apscheduler.schedulers.background import BackgroundScheduler
+
 from .main_window import MainWindow, QApplication, QIcon
+from ..devices import FlowSensor
 
 
 def run_gui(args: list = None):
@@ -11,6 +14,9 @@ def run_gui(args: list = None):
         args = []
     app = QApplication(args)
     app.setWindowIcon(QIcon(os.path.join(os.getcwd(), "icon.ico")))
+    sched = BackgroundScheduler()
+    flow_sensor = FlowSensor(sched)
+    sched.start()
     window = MainWindow()
 
     # EXEC APP
