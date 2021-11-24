@@ -20,23 +20,28 @@ class LightMqtt:
     def send(self):
         self.client.publish(self.topicSend, str(self.light.get_all()), 0)
 
-    def recived(client, userdata, msg):
-        val = str(msg.payload).split('\'')[1]
-        if val == 'on':
-            self.light.light_on()
-        elif val == 'off':
-            self.light.light_off()
-        else:
-            print(val)
+    @staticmethod
+    def receiver(func, light_sensor: LightSensor):
+        def wrapper(client, user_data, msg):
+            light_sensor.light_off()
+            val = str(msg.payload).split("'")[1]
+            if val == "on":
+                light_sensor.light_on()
+            elif val == "off":
+                light_sensor.light_off()
+            else:
+                print(val)
+
+        return wrapper
 
     def start(self):
         self.client.connect(LightMqtt._ip, LightMqtt._port, 60)
         self.client.subscribe(self.topicRecived)
-        self.client.on_message = LightMqtt.recived
-        self.scheduler.add_job(self.send, 'interval', seconds=LightMqtt._socketTimes)
+        self.client.on_message = LightMqtt.receiver(LightMqtt.recived, self.light)
+        self.scheduler.add_job(self.send, "interval", seconds=LightMqtt._socketTimes)
         self.scheduler.start()
         self.client.loop_forever()
-    
+
     def stop(self):
         self.client.disconnect()
 
