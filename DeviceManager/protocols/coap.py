@@ -1,16 +1,13 @@
-import logging
-
 from coapthon.client.helperclient import HelperClient
 from coapthon.messages.message import Message
 from coapthon import defines
 
 from ..config import THINGSBOARD_URL, COAP_PORT
 
-logging.basicConfig(level=logging.DEBUG)
 
-
-class CoapClient:
+class CoapThingsboardClient:
     _ct = {"content_type": defines.Content_types["application/json"]}
+    route_post = "/api/v1/{access_token}/telemetry"
 
     def __init__(self, base_url: str = THINGSBOARD_URL) -> None:
         self._client: HelperClient = HelperClient(server=(base_url, COAP_PORT))
@@ -29,9 +26,13 @@ class CoapClient:
             route, payload, callback=callback, timeout=timeout, **self._ct
         )
 
-    def post(self, route, payload, callback=None, timeout=None) -> Message:
+    def post(self, access_token, payload, callback=None, timeout=None) -> Message:
         return self._client.post(
-            route, payload, callback=callback, timeout=timeout, **self._ct
+            self.route_post.format(access_token=access_token),
+            payload,
+            callback=callback,
+            timeout=timeout,
+            **self._ct
         )
 
     def delete(self, route, payload, callback=None, timeout=None) -> Message:

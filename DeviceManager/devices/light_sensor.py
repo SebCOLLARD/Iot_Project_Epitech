@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import random
-
+import json
 
 class LightSensor:
     _state = 2
@@ -19,45 +19,44 @@ class LightSensor:
             self._intensity = 0
             self._color_temp = 0
 
-    @property
-    def state(self):
+    def get_state(self):
         if self._intensity == 0:
             return 0
         return self._state
 
-    @state.setter
-    def state(self, value: int):
-        self._state = value
-
-    @property
-    def intensity(self):
+    def get_intensity(self):
         if self._state == 0:
             return 0
         return self._intensity
 
-    @intensity.setter
-    def intensity(self, value: int):
-        self._intensity = value
-
-    @property
-    def color_temp(self):
-        if self._state == 0:
+    def get_color_temp(self):
+        if self._state == 0 or self._intensity == 0:
             return 0
         return self._color_temp
 
-    @color_temp.setter
-    def color_temp(self, value: int):
+    def set_state(self, value: int):
+        self._state = value
+
+    def set_intensity(self, value: int):
+        self._intensity = value
+
+    def set_color_temp(self, value: int):
         self._color_temp = value
 
     def get_all(self):
-        return self.state, self.intensity, self.color_temp
+        data : dict = {
+            'state': self.get_state(),
+            'intensity': self.get_intensity(),
+            'color_temp': self.get_color_temp()
+        }
+        return json.dumps(data)
 
     def light_on(self):
         self._state = 1
         if self._intensity == 0:
-            self.intensity(random.randrange(1, LightSensor._intensity))
+            self.set_intensity(random.randrange(1, LightSensor._intensity))
         if self._color_temp == 0:
-            self.color_temp(
+            self.set_color_temp(
                 random.randrange(LightSensor._color_temp[0], LightSensor._color_temp[1])
             )
 
