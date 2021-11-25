@@ -3,8 +3,8 @@ import sys
 
 from apscheduler.schedulers.background import BackgroundScheduler
 
-from .main_window import MainWindow, QApplication, QIcon
-from ..devices import FlowSensor
+from DeviceManager.gui.main_window import MainWindow, QApplication, QIcon
+from ..devices import FlowSensor, InkSensor, SubstanceSensor
 
 
 def run_gui(args: list = None):
@@ -16,6 +16,9 @@ def run_gui(args: list = None):
     app.setWindowIcon(QIcon(os.path.join(os.getcwd(), "icon.ico")))
     sched = BackgroundScheduler()
     flow_sensor = FlowSensor(sched)
+    ink_sensor = InkSensor(sched)
+    substance_sensor = SubstanceSensor(sched)
+
     sched.start()
     window = MainWindow()
 
