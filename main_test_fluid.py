@@ -1,8 +1,8 @@
 from sys import exit
 
-from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
 
-from DeviceManager.protocols.coap import CoapClient
+from DeviceManager.protocols.coap import CoapThingsboardClient
 from DeviceManager.devices.fluid_sensor import *
 
 
@@ -15,14 +15,12 @@ from DeviceManager.devices.fluid_sensor import *
 # print(res)
 # print("end")
 
-sched = BlockingScheduler()
+sched = BackgroundScheduler()
 
 flow = FlowSensor(sched, seconds=5)
 # ink = InkSensor(sched)
 # substance = SubstanceSensor(sched)
 
-try:
-    sched.start()
-except KeyboardInterrupt:
-    sched.shutdown()
-    exit(0)
+sched.start()
+while True:
+    continue

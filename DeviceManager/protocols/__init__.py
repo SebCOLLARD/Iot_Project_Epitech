@@ -1,1 +1,2 @@
-from .coap import CoapClient
+from .coap import CoapThingsboardClient
+from .http_protocol import http_protocol
