@@ -1,22 +1,27 @@
 #!/usr/bin/env python3
 
-from DeviceManager.devices.config_temperature_sensor import *
+from os import replace
+from DeviceManager.config import *
 from DeviceManager.protocols.http_protocol import http_protocol
 import random
 import json
 import requests
 
+
 class TemperatureSensor:
+
+    _IntExt : list = ['Exterior', 'Interior']
+
     def __init__(self) -> None:
         self._temperature : float = 0.0
         self._humidity : int = 0
         self._location : str = ''
-        self._setLocation(self.getRandomLocation() + ', ' + random.choice(IntExt))
-        self._setAll()
+        self._setLocation(self.getRandomLocation() + ', ' + random.choice(self._IntExt))
+        self.generateData()
 
     def getRandomLocation(self) -> str:
         coords : list = []
-        res = requests.get(overpassAPI, params={'data': overpassQuery})
+        res = requests.get(OVERPASS_API_URL, params={'data': OVERPASS_QUERY})
         if res.status_code == 200:
             resData = res.json()
             places = resData.get('elements', [])
@@ -60,7 +65,7 @@ class TemperatureSensor:
     def _setLocation(self, loc: str) -> None:
         self._location = loc
 
-    def _setAll(self) -> None:
+    def generateData(self) -> None:
         validData = self.getValidData()
         invalidData = self.getInvalidData()
         self._setTemperature(random.choices([validData, invalidData], [17, 3], k=1)[0])
@@ -75,5 +80,9 @@ class TemperatureSensor:
         }
         return json.dumps(data)
 
-    def sendData(self, data : str) -> None:
-        http_protocol.post(thinkboardsURL, data)
+    def sendData(self, data : str, token : str) -> None:
+        url : str = THINGSBOARD_PROTOCOL_URL
+        url = 'http://' + url
+        url = url.replace('$ACCES_TOKEN', token)
+        respons : json = http_protocol.post(url, data)
+        print(respons)
