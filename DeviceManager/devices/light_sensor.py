@@ -19,7 +19,6 @@ class LightSensor:
             self._intensity = 0
             self._color_temp = 0
 
-
     def get_state(self):
         if self._intensity == 0:
             return 0
@@ -34,7 +33,6 @@ class LightSensor:
         if self._state == 0 or self._intensity == 0:
             return 0
         return self._color_temp
-
 
     def set_state(self, value: int):
         self._state = value

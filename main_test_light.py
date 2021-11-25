@@ -9,16 +9,17 @@ import json
 
 
 class LightMqtt:
-    _ip = "127.0.0.1"
+    _ip = "thingsboard.matthieu-rochette.fr"
     _port = 1883
     _socketTimes = 2
 
-    def __init__(self, topicSend, topicRecived):
+    def __init__(self, topicSend, topicRecived, access_token):
         self.topicSend = topicSend
         self.topicRecived = topicRecived
         self.scheduler = BackgroundScheduler()
         self.light = LightSensor()
         self.client = mqtt.Client()
+        self.client.username_pw_set(username=access_token)
         self.thread = threading.Thread(target=self.start)
         self.thread.start()
 
@@ -27,6 +28,7 @@ class LightMqtt:
 
     def receiver(self):
         def wrapper(client, user_data, msg):
+            print(msg)
             val = str(msg.payload).split("'")[1]
             jsonData = json.loads(val)
             if jsonData['state'] == 1:
@@ -52,8 +54,8 @@ class LightMqtt:
         self.thread.join()
 
 
-test = LightMqtt("send", "recived")
-test2 = LightMqtt("send", "recived")
+test = LightMqtt("v1/devices/me/telemetry", "v1/devices/me/attributes/response/+", "XBe10xeaw8fpF6bqRr7M")
+# test2 = LightMqtt("send", "recived")
 
 test.stopThread()
-test2.stopThread()
+# test2.stopThread()
