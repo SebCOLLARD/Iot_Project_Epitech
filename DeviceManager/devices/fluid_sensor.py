@@ -39,22 +39,22 @@ class FluidSensor:
 
         return cb
 
-    def check_running(self, func):
-        def wrapper(*args, **kwargs) -> Any | None:
+    def _check_running(func):
+        def wrapper(self, *args, **kwargs) -> Any:
             if self.enabled:
-                return func(*args, **kwargs)
+                return func(self, *args, **kwargs)
             else:
                 return None
 
         return wrapper
 
-    @check_running
+    @_check_running
     def send_data(self, data=None):
         if data is None:
             data = self.gen_data()
         self.client.post(self.token, data, self.get_callback(), timeout=10)
 
-    @check_running
+    @_check_running
     def change_job_params(self, new_json=None):
         """
         Change JSON values sent to server.
