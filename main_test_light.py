@@ -11,7 +11,7 @@ import json
 class LightMqtt:
     _ip = "thingsboard.matthieu-rochette.fr"
     _port = 1883
-    _socketTimes = 2
+    _socketTimes = 1
 
     def __init__(self, topicSend, topicRecived, access_token):
         self.topicSend = topicSend
@@ -25,6 +25,7 @@ class LightMqtt:
 
     def send(self):
         self.client.publish(self.topicSend, str(self.light.get_all()), 0)
+        self.client.publish("v1/devices/me/telemetry", str(self.light.get_all()), 0)
 
     def receiver(self):
         def wrapper(client, user_data, msg):
@@ -54,8 +55,10 @@ class LightMqtt:
         self.thread.join()
 
 
-test = LightMqtt("v1/devices/me/telemetry", "v1/devices/me/attributes/response/+", "XBe10xeaw8fpF6bqRr7M")
-# test2 = LightMqtt("send", "recived")
+test = LightMqtt("v1/devices/me/attributes", "v1/devices/me/attributes", "XBe10xeaw8fpF6bqRr7M")
+test2 = LightMqtt("v1/devices/me/attributes", "v1/devices/me/attributes", "ZsaUJIHhsCDmobiHcc3u")
+test3 = LightMqtt("v1/devices/me/attributes", "v1/devices/me/attributes", "8aTocC8taPVNsYRKLjWz")
 
 test.stopThread()
-# test2.stopThread()
+test2.stopThread()
+test3.stopThread()
