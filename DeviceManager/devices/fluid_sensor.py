@@ -1,5 +1,6 @@
 from random import choice, uniform
 from logging import debug
+from typing import Any
 import json
 
 from apscheduler.schedulers.base import BaseScheduler
@@ -14,6 +15,7 @@ class FluidSensor:
         self.sched = scheduler
         self.client = CoapThingsboardClient()
         self.token = token
+        self.enabled = True
 
         if not trigger_args:
             trigger_args["seconds"] = 1
@@ -37,11 +39,22 @@ class FluidSensor:
 
         return cb
 
+    def check_running(self, func):
+        def wrapper(*args, **kwargs) -> Any | None:
+            if self.enabled:
+                return func(*args, **kwargs)
+            else:
+                return None
+
+        return wrapper
+
+    @check_running
     def send_data(self, data=None):
         if data is None:
             data = self.gen_data()
         self.client.post(self.token, data, self.get_callback(), timeout=10)
 
+    @check_running
     def change_job_params(self, new_json=None):
         """
         Change JSON values sent to server.
@@ -57,6 +70,22 @@ class FluidSensor:
             self.job = self.sched.add_job(
                 self.send_data, trigger=trigger, args=[new_json]
             )
+
+    def toggle(self) -> bool:
+        """
+        Toggle the sensor.
+        Returns wether the toggling succeeded.
+        """
+        try:
+            if self.enabled:
+                self.job = self.sched.pause_job(self.job.id)
+            else:
+                self.job = self.sched.resume_job(self.job.id)
+        except ReferenceError:
+            return False
+        else:
+            self.enabled = not self.enabled
+            return True
 
 
 class InkSensor(FluidSensor):
