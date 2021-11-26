@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_pagesjvFMLG.ui'
+## Form generated from reading UI file 'main_pagesaQdTaY.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.2.1
 ##
@@ -16,8 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QHBoxLayout,
-    QLabel, QSizePolicy, QSlider, QSpacerItem,
-    QStackedWidget, QVBoxLayout, QWidget)
+    QLabel, QPushButton, QSizePolicy, QSlider,
+    QSpacerItem, QStackedWidget, QVBoxLayout, QWidget)
 
 class Ui_MainPages(object):
     def setupUi(self, MainPages):
@@ -86,6 +86,11 @@ class Ui_MainPages(object):
 
         self.verticalLayout.addItem(self.verticalSpacer)
 
+        self.resetInkButton = QPushButton(self.page_fluid)
+        self.resetInkButton.setObjectName(u"resetInkButton")
+
+        self.verticalLayout.addWidget(self.resetInkButton)
+
 
         self.horizontalLayout.addLayout(self.verticalLayout)
 
@@ -147,6 +152,11 @@ class Ui_MainPages(object):
 
         self.verticalLayout_2.addWidget(self.label_8)
 
+        self.resetFlowButton = QPushButton(self.page_fluid)
+        self.resetFlowButton.setObjectName(u"resetFlowButton")
+
+        self.verticalLayout_2.addWidget(self.resetFlowButton)
+
 
         self.horizontalLayout.addLayout(self.verticalLayout_2)
 
@@ -183,6 +193,11 @@ class Ui_MainPages(object):
 
         self.verticalLayout_3.addItem(self.verticalSpacer_2)
 
+        self.resetSubstanceButton = QPushButton(self.page_fluid)
+        self.resetSubstanceButton.setObjectName(u"resetSubstanceButton")
+
+        self.verticalLayout_3.addWidget(self.resetSubstanceButton)
+
 
         self.horizontalLayout.addLayout(self.verticalLayout_3)
 
@@ -211,16 +226,19 @@ class Ui_MainPages(object):
         self.ink_color.setItemText(2, QCoreApplication.translate("MainPages", u"magenta", None))
         self.ink_color.setItemText(3, QCoreApplication.translate("MainPages", u"black", None))
 
+        self.resetInkButton.setText(QCoreApplication.translate("MainPages", u"Set to random", None))
         self.label_2.setText(QCoreApplication.translate("MainPages", u"Flow", None))
         self.label_7.setText(QCoreApplication.translate("MainPages", u"1500", None))
         self.label_5.setText(QCoreApplication.translate("MainPages", u"Flow in ml/s:", None))
         self.label_6.setText(QCoreApplication.translate("MainPages", u"<value>", None))
         self.label_8.setText(QCoreApplication.translate("MainPages", u"-200", None))
+        self.resetFlowButton.setText(QCoreApplication.translate("MainPages", u"Set to random", None))
         self.label_3.setText(QCoreApplication.translate("MainPages", u"Substance", None))
         self.label_9.setText(QCoreApplication.translate("MainPages", u"Choose a substance type:", None))
         self.comboBox.setItemText(0, QCoreApplication.translate("MainPages", u"water", None))
         self.comboBox.setItemText(1, QCoreApplication.translate("MainPages", u"alcohol", None))
         self.comboBox.setItemText(2, QCoreApplication.translate("MainPages", u"oil", None))
 
+        self.resetSubstanceButton.setText(QCoreApplication.translate("MainPages", u"Set to random", None))
     # retranslateUi
 
