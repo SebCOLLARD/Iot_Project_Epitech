@@ -29,7 +29,7 @@ class FluidSensor:
 
     def data_from_values(self, *args) -> str:
         """
-        Returns a JSON payload from given dict (or keyword arguments).
+        Returns a JSON payload from given values.
         """
         raise NotImplementedError()
 
