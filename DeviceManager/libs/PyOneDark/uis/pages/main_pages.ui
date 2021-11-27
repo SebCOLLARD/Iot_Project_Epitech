@@ -31,50 +31,53 @@
    </property>
    <item>
     <widget class="QStackedWidget" name="pages">
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page_light">
       <property name="styleSheet">
-       <string notr="true">font-size: 14pt; background: lightgreen;</string>
+       <string notr="true"/>
       </property>
       <layout class="QVBoxLayout" name="page_light_layout">
        <property name="spacing">
         <number>5</number>
        </property>
        <property name="leftMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
        <property name="topMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
        <property name="rightMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
       </layout>
      </widget>
      <widget class="QWidget" name="page_temperature">
       <property name="styleSheet">
-       <string notr="true">; background: orange;</string>
+       <string notr="true"/>
       </property>
       <layout class="QVBoxLayout" name="page_temperature_layout">
        <property name="spacing">
         <number>5</number>
        </property>
        <property name="leftMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
        <property name="topMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
        <property name="rightMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
       </layout>
      </widget>
@@ -339,6 +342,12 @@
            </item>
            <item>
             <widget class="QComboBox" name="comboBox">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <item>
               <property name="text">
                <string>water</string>

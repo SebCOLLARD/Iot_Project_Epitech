@@ -47,6 +47,8 @@ from .ui_main import *
 # ///////////////////////////////////////////////////////////////
 from .functions_main_window import *
 
+from ......config import LIGHT_DASHBOARD_URL, TEMPERATURE_DASHBOARD_URL
+
 # PY WINDOW
 # ///////////////////////////////////////////////////////////////
 class SetupMainWindow:
@@ -168,6 +170,25 @@ class SetupMainWindow:
         # ///////////////////////////////////////////////////////////////
         self.ui.left_column.clicked.connect(self.btn_clicked)
         self.ui.left_column.released.connect(self.btn_released)
+
+        # REMOVE MARGINS IN TEMP & LIGHT PAGES
+        # self.ui.load_pages.page_temperature_layout.setContentsMargins(0, 0, 0, 0)
+        # self.ui.load_pages.page_light_layout.setContentsMargins(0, 0, 0, 0)
+
+        # ADD WEBVIEWS MANUALLY BECAUSE DESIGNER CRASHES...
+        # ////////////////////////////////////////////////////////////////
+        self.dashboard_light = QWebEngineView()
+        self.dashboard_light.load(LIGHT_DASHBOARD_URL)
+        self.dashboard_light.setFixedSize(1600, 820)
+        # self.dashboard_light.page().action(QWebEnginePage.Reload).trigger()
+        self.ui.load_pages.page_light_layout.addChildWidget(self.dashboard_light)
+
+        self.dashboard_temperature = QWebEngineView()
+        self.dashboard_temperature.load(TEMPERATURE_DASHBOARD_URL)
+        self.dashboard_temperature.setFixedSize(1600, 820)
+        self.ui.load_pages.page_temperature_layout.addChildWidget(
+            self.dashboard_temperature
+        )
 
         # SET INITIAL PAGE / SET LEFT AND RIGHT COLUMN MENUS
         # ///////////////////////////////////////////////////////////////

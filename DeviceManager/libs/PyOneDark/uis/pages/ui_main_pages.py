@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_pagessmiJMM.ui'
+## Form generated from reading UI file 'main_pagesMkKRgF.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.2.1
 ##
@@ -31,21 +31,22 @@ class Ui_MainPages(object):
         self.main_pages_layout.setContentsMargins(5, 5, 5, 5)
         self.pages = QStackedWidget(MainPages)
         self.pages.setObjectName(u"pages")
+        self.pages.setLayoutDirection(Qt.LeftToRight)
         self.page_light = QWidget()
         self.page_light.setObjectName(u"page_light")
-        self.page_light.setStyleSheet(u"font-size: 14pt; background: lightgreen;")
+        self.page_light.setStyleSheet(u"")
         self.page_light_layout = QVBoxLayout(self.page_light)
         self.page_light_layout.setSpacing(5)
         self.page_light_layout.setObjectName(u"page_light_layout")
-        self.page_light_layout.setContentsMargins(5, 5, 5, 5)
+        self.page_light_layout.setContentsMargins(0, 0, 0, 0)
         self.pages.addWidget(self.page_light)
         self.page_temperature = QWidget()
         self.page_temperature.setObjectName(u"page_temperature")
-        self.page_temperature.setStyleSheet(u"; background: orange;")
+        self.page_temperature.setStyleSheet(u"")
         self.page_temperature_layout = QVBoxLayout(self.page_temperature)
         self.page_temperature_layout.setSpacing(5)
         self.page_temperature_layout.setObjectName(u"page_temperature_layout")
-        self.page_temperature_layout.setContentsMargins(5, 5, 5, 5)
+        self.page_temperature_layout.setContentsMargins(0, 0, 0, 0)
         self.pages.addWidget(self.page_temperature)
         self.page_fluid = QWidget()
         self.page_fluid.setObjectName(u"page_fluid")
@@ -208,6 +209,11 @@ class Ui_MainPages(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.setObjectName(u"comboBox")
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.comboBox.sizePolicy().hasHeightForWidth())
+        self.comboBox.setSizePolicy(sizePolicy)
 
         self.SubstanceLayout.addWidget(self.comboBox)
 
@@ -233,7 +239,7 @@ class Ui_MainPages(object):
 
         self.retranslateUi(MainPages)
 
-        self.pages.setCurrentIndex(2)
+        self.pages.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainPages)

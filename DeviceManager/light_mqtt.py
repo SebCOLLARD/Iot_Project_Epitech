@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 
-from time import sleep
 import paho.mqtt.client as mqtt
 from apscheduler.schedulers.background import BackgroundScheduler
-from DeviceManager.devices import LightSensor
+from .devices import LightSensor
 import threading
 import json
-import pprint
 
 
 class LightMqtt:
@@ -25,6 +23,9 @@ class LightMqtt:
         self.thread = threading.Thread(target=self.start)
         self.thread.start()
 
+    def __del__(self):
+        self.stopThread()
+
     def send(self):
         self.client.publish(self.topicSend, str(self.light.get_all()), 0)
         self.client.publish("v1/devices/me/telemetry", str(self.light.get_all()), 0)
@@ -37,17 +38,17 @@ class LightMqtt:
             jsonData = json.loads(val)
             if jsonData == None:
                 return
-            params = jsonData['params']
-            method = jsonData['method']
+            params = jsonData["params"]
+            method = jsonData["method"]
             if params == None or method == None:
                 return
-            if method == self.accessToken + '_switch' and params == True :
+            if method == self.accessToken + "_switch" and params == True:
                 self.light.light_on()
-            elif method == self.accessToken + '_switch' and params == False :
+            elif method == self.accessToken + "_switch" and params == False:
                 self.light.light_off()
-            if method == self.accessToken + '_intensity' :
+            if method == self.accessToken + "_intensity":
                 self.light.set_intensity(params)
-            if method == self.accessToken + '_color' :
+            if method == self.accessToken + "_color":
                 self.light.set_color_temp(params)
 
         return wrapper
@@ -59,16 +60,7 @@ class LightMqtt:
         self.scheduler.add_job(self.send, "interval", seconds=LightMqtt._socketTimes)
         self.scheduler.start()
         self.client.loop_forever()
-    
+
     def stopThread(self):
         self.client.disconnect()
         self.thread.join()
-
-
-test = LightMqtt("v1/devices/me/attributes", "v1/devices/me/rpc/request/+", "XBe10xeaw8fpF6bqRr7M")
-test2 = LightMqtt("v1/devices/me/attributes", "v1/devices/me/rpc/request/+", "ZsaUJIHhsCDmobiHcc3u")
-test3 = LightMqtt("v1/devices/me/attributes", "v1/devices/me/rpc/request/+", "8aTocC8taPVNsYRKLjWz")
-
-test.stopThread()
-test2.stopThread()
-test3.stopThread()
