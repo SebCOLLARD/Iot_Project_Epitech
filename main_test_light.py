@@ -6,6 +6,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from DeviceManager.devices import LightSensor
 import threading
 import json
+import pprint
 
 
 class LightMqtt:
@@ -16,10 +17,11 @@ class LightMqtt:
     def __init__(self, topicSend, topicRecived, access_token):
         self.topicSend = topicSend
         self.topicRecived = topicRecived
+        self.accessToken = access_token
         self.scheduler = BackgroundScheduler()
         self.light = LightSensor()
         self.client = mqtt.Client()
-        self.client.username_pw_set(username=access_token)
+        self.client.username_pw_set(username=self.accessToken)
         self.thread = threading.Thread(target=self.start)
         self.thread.start()
 
@@ -29,16 +31,17 @@ class LightMqtt:
 
     def receiver(self):
         def wrapper(client, user_data, msg):
-            print(msg)
+
             val = str(msg.payload).split("'")[1]
             jsonData = json.loads(val)
-            if jsonData['state'] == 1:
+            params = jsonData['params']
+            method = jsonData['method']
+            if method == self.accessToken and params == True :
                 self.light.light_on()
-            else:
+            elif method == self.accessToken and params == False :
                 self.light.light_off()
-
-            self.light.set_intensity(jsonData['intensity'])
-            self.light.set_color_temp(jsonData['color_temp'])
+            # self.light.set_intensity(jsonData['intensity'])
+            # self.light.set_color_temp(jsonData['color_temp'])
 
         return wrapper
 
@@ -55,9 +58,9 @@ class LightMqtt:
         self.thread.join()
 
 
-test = LightMqtt("v1/devices/me/attributes", "v1/devices/me/attributes", "XBe10xeaw8fpF6bqRr7M")
-test2 = LightMqtt("v1/devices/me/attributes", "v1/devices/me/attributes", "ZsaUJIHhsCDmobiHcc3u")
-test3 = LightMqtt("v1/devices/me/attributes", "v1/devices/me/attributes", "8aTocC8taPVNsYRKLjWz")
+test = LightMqtt("v1/devices/me/attributes", "v1/devices/me/rpc/request/+", "XBe10xeaw8fpF6bqRr7M")
+test2 = LightMqtt("v1/devices/me/attributes", "v1/devices/me/rpc/request/+", "ZsaUJIHhsCDmobiHcc3u")
+test3 = LightMqtt("v1/devices/me/attributes", "v1/devices/me/rpc/request/+", "8aTocC8taPVNsYRKLjWz")
 
 test.stopThread()
 test2.stopThread()
