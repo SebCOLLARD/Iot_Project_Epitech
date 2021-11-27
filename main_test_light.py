@@ -31,17 +31,24 @@ class LightMqtt:
 
     def receiver(self):
         def wrapper(client, user_data, msg):
-
             val = str(msg.payload).split("'")[1]
+            if val == None:
+                return
             jsonData = json.loads(val)
+            if jsonData == None:
+                return
             params = jsonData['params']
             method = jsonData['method']
-            if method == self.accessToken and params == True :
+            if params == None or method == None:
+                return
+            if method == self.accessToken + '_switch' and params == True :
                 self.light.light_on()
-            elif method == self.accessToken and params == False :
+            elif method == self.accessToken + '_switch' and params == False :
                 self.light.light_off()
-            # self.light.set_intensity(jsonData['intensity'])
-            # self.light.set_color_temp(jsonData['color_temp'])
+            if method == self.accessToken + '_intensity' :
+                self.light.set_intensity(params)
+            if method == self.accessToken + '_color' :
+                self.light.set_color_temp(params)
 
         return wrapper
 

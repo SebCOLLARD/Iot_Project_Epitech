@@ -20,8 +20,8 @@ class LightSensor:
             self._color_temp = 0
 
     def get_state(self):
-        if self._intensity == 0:
-            return 0
+        # if self._intensity == 0:
+        #     return 0
         return self._state
 
     def get_intensity(self):
@@ -38,14 +38,23 @@ class LightSensor:
         self._state = value
 
     def set_intensity(self, value: int):
+        # if value > 0:
+        #     self._state = 1
         self._intensity = value
 
     def set_color_temp(self, value: int):
         self._color_temp = value
 
     def get_all(self):
+        if self.get_state() == 0:
+            led = 0
+        elif self.get_state() == 1 and self.get_intensity() == 0:
+            led = 0
+        else:
+            led = 1
         data : dict = {
             'state': self.get_state(),
+            'led': led,
             'intensity': self.get_intensity(),
             'color_temp': self.get_color_temp()
         }
