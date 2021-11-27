@@ -154,7 +154,7 @@ class SetupMainWindow:
         # TITLE BAR / ADD EXTRA BUTTONS
         # ///////////////////////////////////////////////////////////////
         # ADD MENUS
-        self.ui.title_bar.add_menus(SetupMainWindow.add_title_bar_menus)
+        # self.ui.title_bar.add_menus(SetupMainWindow.add_title_bar_menus)
 
         # SET SIGNALS
         self.ui.title_bar.clicked.connect(self.btn_clicked)
@@ -179,13 +179,13 @@ class SetupMainWindow:
         # ////////////////////////////////////////////////////////////////
         self.dashboard_light = QWebEngineView()
         self.dashboard_light.load(LIGHT_DASHBOARD_URL)
-        self.dashboard_light.setFixedSize(1600, 820)
+        self.dashboard_light.setFixedSize(1600, 900)
         # self.dashboard_light.page().action(QWebEnginePage.Reload).trigger()
         self.ui.load_pages.page_light_layout.addChildWidget(self.dashboard_light)
 
         self.dashboard_temperature = QWebEngineView()
         self.dashboard_temperature.load(TEMPERATURE_DASHBOARD_URL)
-        self.dashboard_temperature.setFixedSize(1600, 820)
+        self.dashboard_temperature.setFixedSize(1600, 900)
         self.ui.load_pages.page_temperature_layout.addChildWidget(
             self.dashboard_temperature
         )

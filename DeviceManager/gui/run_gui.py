@@ -17,9 +17,9 @@ def run_gui(args: list = None):
     app = QApplication(args)
     app.setWindowIcon(QIcon(os.path.join(os.getcwd(), "icon.ico")))
     sched = BackgroundScheduler()
-    # FlowSensor(sched, FLOW_SENSOR_TOKEN)
-    # InkSensor(sched, INK_SENSOR_TOKEN)
-    # SubstanceSensor(sched, SUBSTANCE_SENSOR_TOKEN)
+    FlowSensor(sched, FLOW_SENSOR_TOKEN)
+    InkSensor(sched, INK_SENSOR_TOKEN)
+    SubstanceSensor(sched, SUBSTANCE_SENSOR_TOKEN)
     LightMqtt(
         "v1/devices/me/attributes",
         "v1/devices/me/rpc/request/+",
@@ -35,12 +35,11 @@ def run_gui(args: list = None):
         "v1/devices/me/rpc/request/+",
         "8aTocC8taPVNsYRKLjWz",
     )
-
-    sched.start()
-    window = MainWindow()
+    MainWindow()
 
     # EXEC APP
     # ///////////////////////////////////////////////////////////////
+    sched.start()
     sys.exit(app.exec())
 
 

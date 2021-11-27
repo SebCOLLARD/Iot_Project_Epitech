@@ -1,5 +1,6 @@
 import sys
 import os
+from logging import debug
 
 from ..libs.PyOneDark.uis.windows.main_window.functions_main_window import *
 
@@ -99,7 +100,7 @@ class MainWindow(QMainWindow):
             top_settings.set_active_tab(False)
 
         # DEBUG
-        print(f"Button {btn.objectName()}, clicked!")
+        debug(f"Button {btn.objectName()}, clicked!")
 
     # LEFT MENU BTN IS RELEASED
     # Run function when btn is released
@@ -110,7 +111,7 @@ class MainWindow(QMainWindow):
         btn = SetupMainWindow.setup_btns(self)
 
         # DEBUG
-        print(f"Button {btn.objectName()}, released!")
+        debug(f"Button {btn.objectName()}, released!")
 
     # RESIZE EVENT
     # ///////////////////////////////////////////////////////////////
