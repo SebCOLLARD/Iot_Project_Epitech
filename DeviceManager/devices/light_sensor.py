@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
-import random
 import json
+import random
+
 
 class LightSensor:
     """
-    Simulated IoT sensor for light. 
+    Simulated IoT sensor for light.
     """
 
     _state = 2
@@ -69,7 +70,7 @@ class LightSensor:
     def get_all(self):
         """
         led = When the intensity is at 0 the LED turns off. Is not depending off the state.
-        Return a JSON containing the light data.  
+        Return a JSON containing the light data.
         """
         if self.get_state() == 0:
             led = 0
@@ -77,11 +78,11 @@ class LightSensor:
             led = 0
         else:
             led = 1
-        data : dict = {
-            'state': self.get_state(),
-            'led': led,
-            'intensity': self.get_intensity(),
-            'color_temp': self.get_color_temp()
+        data: dict = {
+            "state": self.get_state(),
+            "led": led,
+            "intensity": self.get_intensity(),
+            "color_temp": self.get_color_temp(),
         }
         return json.dumps(data)
 

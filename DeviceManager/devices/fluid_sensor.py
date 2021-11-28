@@ -1,7 +1,7 @@
-from random import choice, uniform
-from logging import debug
-from typing import Any
 import json
+from logging import debug
+from random import choice, uniform
+from typing import Any
 
 from apscheduler.schedulers.base import BaseScheduler
 from apscheduler.triggers.interval import IntervalTrigger

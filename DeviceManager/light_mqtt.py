@@ -106,7 +106,7 @@ class LightMqtt:
 
     def stopThread(self):
         """
-        Stop all asynchronous processus.
+        Stop all background processes.
         """
         self.scheduler.remove_all_jobs()
         self.client.disconnect()

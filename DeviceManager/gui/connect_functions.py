@@ -1,5 +1,6 @@
-from ..devices.fluid_sensor import FluidSensor
 from PySide6.QtWidgets import QComboBox, QSlider
+
+from ..devices.fluid_sensor import FluidSensor
 
 
 def change_params_sensor_from_combobox(sensor: FluidSensor, combo: QComboBox):

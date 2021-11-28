@@ -1,7 +1,6 @@
 import os
 import sys
 
-from apscheduler.schedulers import SchedulerAlreadyRunningError
 from apscheduler.schedulers.background import BackgroundScheduler
 
 from ..config import *
@@ -12,9 +11,16 @@ from .connect_functions import *
 
 
 class QAppWithScheduler(QApplication):
+    """
+    QApplication but with an APScheduler.
+    """
+
     def __init__(self, args: list = None):
         super().__init__(args)
+
         self._sched = BackgroundScheduler()
+
+        # LIGHT SENSORS
         self.light_1 = LightMqtt(
             "v1/devices/me/attributes",
             "v1/devices/me/rpc/request/+",
@@ -31,19 +37,22 @@ class QAppWithScheduler(QApplication):
             LIGHT_3_TOKEN,
         )
 
+        # FLUID SENSORS
         self.flow_sensor = FlowSensor(self._sched, FLOW_SENSOR_TOKEN)
         self.ink_sensor = InkSensor(self._sched, INK_SENSOR_TOKEN)
         self.substance_sensor = SubstanceSensor(self._sched, SUBSTANCE_SENSOR_TOKEN)
 
+        # TEMPERATURE SENSORS
         self.temp_sensor_1 = TemperatureSensor(TEMP_1_TOKEN, self._sched)
         self.temp_sensor_2 = TemperatureSensor(TEMP_2_TOKEN, self._sched)
         self.temp_sensor_3 = TemperatureSensor(TEMP_3_TOKEN, self._sched)
 
     def exec(self):
-        try:
-            self._sched.start()
-        except SchedulerAlreadyRunningError:
-            pass
+        """
+        Start the scheduler, execute the application and then join threads and shutdown the scheduler.
+        """
+
+        self._sched.start()
 
         super().exec()
 
@@ -55,15 +64,20 @@ class QAppWithScheduler(QApplication):
 
 
 def run_gui(args: list = None):
+    """
+    Setup and run the Qt GUI and the devices in the background.
+    """
     if args is None:
         args = []
 
+    # Instanciate the App & the main window
     app = QAppWithScheduler(args)
     app.setWindowIcon(QIcon(os.path.join(os.getcwd(), "icon.ico")))
     window = MainWindow()
 
-    # CONFIGURING FLUID WIDGETS ACTIONS
+    # CONFIGURING FLUID PAGE WIDGETS TO INTERACT WITH SENSORS
     # /////////////////////////////////////////////////////////////////////////
+    # INK SENSOR
     window.ui.load_pages.ink_toggle.stateChanged.connect(app.ink_sensor.toggle)
     window.ui.load_pages.ink_color.currentTextChanged.connect(
         change_params_sensor_from_combobox(
@@ -74,6 +88,7 @@ def run_gui(args: list = None):
         reset_random_params_sensor(app.ink_sensor)
     )
 
+    # FLOW SENSOR
     window.ui.load_pages.flow_toggle.stateChanged.connect(app.flow_sensor.toggle)
     window.ui.load_pages.flow_slider.sliderReleased.connect(
         change_params_sensor_from_slider(
@@ -84,6 +99,7 @@ def run_gui(args: list = None):
         reset_random_params_sensor(app.flow_sensor)
     )
 
+    # SUBSTANCE SENSOR
     window.ui.load_pages.substance_toggle.stateChanged.connect(
         app.substance_sensor.toggle
     )
@@ -99,11 +115,3 @@ def run_gui(args: list = None):
     # EXEC APP
     # ///////////////////////////////////////////////////////////////
     sys.exit(app.exec())
-
-
-# SETTINGS WHEN TO START
-# Set the initial class and also additional parameters of the "QApplication" class
-# ///////////////////////////////////////////////////////////////
-if __name__ == "__main__":
-    print(sys.argv, type(sys.argv))
-    run_gui(sys.argv)

@@ -7,20 +7,19 @@ While modifications may have been made, the credit goes to PyOneDark.
 import os
 from logging import debug
 
-from ..libs.PyOneDark.uis.windows.main_window.functions_main_window import *
+# IMPORT SETTINGS
+# ///////////////////////////////////////////////////////////////
+from ..libs.PyOneDark.core.json_settings import Settings
 
 # IMPORT QT CORE
 # ///////////////////////////////////////////////////////////////
 from ..libs.PyOneDark.qt_core import *
 
-# IMPORT SETTINGS
-# ///////////////////////////////////////////////////////////////
-from ..libs.PyOneDark.core.json_settings import Settings
-
 # IMPORT PY ONE DARK WINDOWS
 # ///////////////////////////////////////////////////////////////
 # MAIN WINDOW
 from ..libs.PyOneDark.uis.windows.main_window import *
+from ..libs.PyOneDark.uis.windows.main_window.functions_main_window import *
 
 # IMPORT PY ONE DARK WIDGETS
 # ///////////////////////////////////////////////////////////////

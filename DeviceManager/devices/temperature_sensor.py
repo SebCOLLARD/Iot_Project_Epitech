@@ -5,10 +5,8 @@ import random
 
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
-
-
 from DeviceManager.config import *
-from DeviceManager.protocols.http_protocol import http_protocol
+from DeviceManager.protocols.http_protocol import HttpProtocol
 
 
 class TemperatureSensor:
@@ -154,4 +152,4 @@ class TemperatureSensor:
         url = "http://" + url
         url = url.replace("$ACCES_TOKEN", self._token)
         data: str = self.getTelemetryData()
-        http_protocol.post(url, data)
+        HttpProtocol.post(url, data)
