@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
 import paho.mqtt.client as mqtt
+
 from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers import SchedulerAlreadyRunningError
 from .devices import LightSensor
 import threading
 import json
@@ -16,7 +18,7 @@ class LightMqtt:
         self.topicSend = topicSend
         self.topicRecived = topicRecived
         self.accessToken = access_token
-        self.scheduler = BackgroundScheduler()
+        self.scheduler: BackgroundScheduler = BackgroundScheduler()
         self.light = LightSensor()
         self.client = mqtt.Client()
         self.client.username_pw_set(username=self.accessToken)
@@ -24,6 +26,7 @@ class LightMqtt:
         self.thread.start()
 
     def __del__(self):
+        print("\n\n\n\nIN DEL\n\n\n\n")
         self.stopThread()
 
     def send(self):
@@ -33,23 +36,27 @@ class LightMqtt:
     def receiver(self):
         def wrapper(client, user_data, msg):
             val = str(msg.payload).split("'")[1]
-            if val == None:
+            if val is None:
                 return
             jsonData = json.loads(val)
-            if jsonData == None:
+            if jsonData is None:
                 return
-            params = jsonData["params"]
-            method = jsonData["method"]
-            if params == None or method == None:
+            try:
+                params = jsonData["params"]
+                method = jsonData["method"]
+            except KeyError:
                 return
-            if method == self.accessToken + "_switch" and params == True:
-                self.light.light_on()
-            elif method == self.accessToken + "_switch" and params == False:
-                self.light.light_off()
-            if method == self.accessToken + "_intensity":
-                self.light.set_intensity(params)
-            if method == self.accessToken + "_color":
-                self.light.set_color_temp(params)
+            else:
+                if params is None or method is None:
+                    return
+                if method == self.accessToken + "_switch" and params == True:
+                    self.light.light_on()
+                elif method == self.accessToken + "_switch" and params == False:
+                    self.light.light_off()
+                if method == self.accessToken + "_intensity":
+                    self.light.set_intensity(params)
+                if method == self.accessToken + "_color":
+                    self.light.set_color_temp(params)
 
         return wrapper
 
@@ -57,10 +64,16 @@ class LightMqtt:
         self.client.connect(LightMqtt._ip, LightMqtt._port, 60)
         self.client.subscribe(self.topicRecived)
         self.client.on_message = self.receiver()
-        self.scheduler.add_job(self.send, "interval", seconds=LightMqtt._socketTimes)
-        self.scheduler.start()
+        self.job = self.scheduler.add_job(
+            self.send, "interval", seconds=LightMqtt._socketTimes
+        )
+        try:
+            self.scheduler.start()
+        except SchedulerAlreadyRunningError:
+            pass
         self.client.loop_forever()
 
     def stopThread(self):
+        self.scheduler.remove_job(self.job.id)
         self.client.disconnect()
         self.thread.join()
