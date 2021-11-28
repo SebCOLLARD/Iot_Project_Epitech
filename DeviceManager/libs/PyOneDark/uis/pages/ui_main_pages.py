@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_pagesEQiBdW.ui'
+## Form generated from reading UI file 'main_pagesJNRoHB.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.2.1
 ##
@@ -142,15 +142,15 @@ class Ui_MainPages(object):
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.flow_slider = QSlider(self.page_fluid)
         self.flow_slider.setObjectName(u"flow_slider")
-        self.flow_slider.setMinimum(-200)
-        self.flow_slider.setMaximum(1500)
-        self.flow_slider.setSingleStep(10)
-        self.flow_slider.setPageStep(100)
+        self.flow_slider.setMinimum(-10)
+        self.flow_slider.setMaximum(150)
+        self.flow_slider.setSingleStep(5)
+        self.flow_slider.setPageStep(10)
         self.flow_slider.setOrientation(Qt.Vertical)
         self.flow_slider.setInvertedAppearance(False)
         self.flow_slider.setInvertedControls(False)
         self.flow_slider.setTickPosition(QSlider.TicksAbove)
-        self.flow_slider.setTickInterval(100)
+        self.flow_slider.setTickInterval(10)
 
         self.horizontalLayout_2.addWidget(self.flow_slider)
 
@@ -268,10 +268,10 @@ class Ui_MainPages(object):
         self.resetInkButton.setText(QCoreApplication.translate("MainPages", u"Set to random", None))
         self.label_2.setText(QCoreApplication.translate("MainPages", u"Flow", None))
         self.flow_toggle.setText(QCoreApplication.translate("MainPages", u"Enabled", None))
-        self.label_7.setText(QCoreApplication.translate("MainPages", u"1500", None))
+        self.label_7.setText(QCoreApplication.translate("MainPages", u"150", None))
         self.label_5.setText(QCoreApplication.translate("MainPages", u"Flow in ml/s:", None))
         self.label_flow_value.setText(QCoreApplication.translate("MainPages", u"0", None))
-        self.label_8.setText(QCoreApplication.translate("MainPages", u"-200", None))
+        self.label_8.setText(QCoreApplication.translate("MainPages", u"-10", None))
         self.resetFlowButton.setText(QCoreApplication.translate("MainPages", u"Set to random", None))
         self.label_3.setText(QCoreApplication.translate("MainPages", u"Substance", None))
         self.substance_toggle.setText(QCoreApplication.translate("MainPages", u"Enabled", None))

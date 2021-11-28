@@ -134,7 +134,7 @@ class FlowSensor(FluidSensor):
         self.job = self.sched.add_job(self.send_data, trigger=self.default_trigger)
 
     def gen_data(self) -> str:
-        payload = {"flow_in_ml_per_s": round(uniform(-200, 1500), 3)}
+        payload = {"flow_in_ml_per_s": round(uniform(-10, 150), 3)}
         debug(payload)
         return json.dumps(payload)
 

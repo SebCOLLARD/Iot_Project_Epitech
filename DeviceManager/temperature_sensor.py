@@ -11,10 +11,9 @@ class temperature_sensor:
         self._scheduler = scheduler
         self._job = self._scheduler.add_job(self.send, "interval", seconds=2)
 
-    def send(self):
+    def send(self) -> None:
         self._tempSensor.generateData()
-        jsonData: str = self._tempSensor.rawToJSON()
-        self._tempSensor.sendData(jsonData, self._token)
+        self._tempSensor.send(self._token)
 
-    def getJob(self):
+    def getJob(self) -> None:
         return self._job
