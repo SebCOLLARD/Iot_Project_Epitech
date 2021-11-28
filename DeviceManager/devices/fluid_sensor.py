@@ -5,7 +5,6 @@ import json
 
 from apscheduler.schedulers.base import BaseScheduler
 from apscheduler.triggers.interval import IntervalTrigger
-from apscheduler.job import Job
 
 from ..protocols import CoapThingsboardClient
 
@@ -35,7 +34,7 @@ class FluidSensor:
 
     def get_callback(self):
         def cb(*args):
-            debug("Inside callback. Received: {}", *args)
+            debug("Inside callback. Received: " + str(args))
 
         return cb
 
@@ -50,11 +49,11 @@ class FluidSensor:
 
     @_check_running
     def send_data(self, data=None):
-        if data is None:
+        if data is None or data == "":
             data = self.gen_data()
         self.client.post(self.token, data, self.get_callback(), timeout=10)
 
-    @_check_running
+    # @_check_running
     def change_job_params(self, new_json=None):
         """
         Change JSON values sent to server.
@@ -65,7 +64,7 @@ class FluidSensor:
         except ReferenceError:
             trigger = self.default_trigger
         else:
-            self.sched.remove_job(self.job)
+            self.sched.remove_job(self.job.id)
         finally:
             self.job = self.sched.add_job(
                 self.send_data, trigger=trigger, args=[new_json]
@@ -76,6 +75,7 @@ class FluidSensor:
         Toggle the sensor.
         Returns wether the toggling succeeded.
         """
+        debug("\n\n\n\nINSIDE TOGGLE\n\n\n\n")
         try:
             if self.enabled:
                 self.job = self.sched.pause_job(self.job.id)
@@ -100,7 +100,9 @@ class InkSensor(FluidSensor):
         debug(payload)
         return json.dumps(payload)
 
-    def data_from_values(self, color: str) -> str:
+    def data_from_values(self, color: str = None) -> str:
+        if not color:
+            return None
         payload = {"color": color}
         debug(payload)
         return json.dumps(payload)
@@ -118,7 +120,9 @@ class SubstanceSensor(FluidSensor):
         debug(payload)
         return json.dumps(payload)
 
-    def data_from_values(self, substance: str) -> str:
+    def data_from_values(self, substance: str = None) -> str:
+        if not substance:
+            return None
         payload = {"substance": substance}
         debug(payload)
         return json.dumps(payload)
@@ -134,7 +138,9 @@ class FlowSensor(FluidSensor):
         debug(payload)
         return json.dumps(payload)
 
-    def data_from_values(self, flow: float) -> str:
+    def data_from_values(self, flow: float = None) -> str:
+        if not flow and flow != 0:
+            return None
         payload = {"flow_in_ml_per_s": flow}
         debug(payload)
         return json.dumps(payload)

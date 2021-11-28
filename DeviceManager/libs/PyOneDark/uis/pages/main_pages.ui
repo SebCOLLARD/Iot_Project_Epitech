@@ -35,7 +35,7 @@
       <enum>Qt::LeftToRight</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="page_light">
       <property name="styleSheet">
@@ -88,6 +88,9 @@
       <layout class="QVBoxLayout" name="page_fluid_layout">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetNoConstraint</enum>
+         </property>
          <item>
           <layout class="QVBoxLayout" name="InkLayout">
            <item>
@@ -139,6 +142,11 @@
             <widget class="QComboBox" name="ink_color">
              <item>
               <property name="text">
+               <string/>
+              </property>
+             </item>
+             <item>
+              <property name="text">
                <string>cyan</string>
               </property>
              </item>
@@ -155,6 +163,21 @@
              <item>
               <property name="text">
                <string>black</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>red</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>blue</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>green</string>
               </property>
              </item>
             </widget>
@@ -231,7 +254,7 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
-              <widget class="QSlider" name="verticalSlider">
+              <widget class="QSlider" name="flow_slider">
                <property name="minimum">
                 <number>-200</number>
                </property>
@@ -272,9 +295,9 @@
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="label_6">
+              <widget class="QLabel" name="label_flow_value">
                <property name="text">
-                <string>&lt;value&gt;</string>
+                <string>0</string>
                </property>
               </widget>
              </item>
@@ -341,13 +364,18 @@
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox">
+            <widget class="QComboBox" name="substance_combo">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <item>
+              <property name="text">
+               <string/>
+              </property>
+             </item>
              <item>
               <property name="text">
                <string>water</string>

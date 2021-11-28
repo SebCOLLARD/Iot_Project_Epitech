@@ -47,7 +47,11 @@ from .ui_main import *
 # ///////////////////////////////////////////////////////////////
 from .functions_main_window import *
 
-from ......config import LIGHT_DASHBOARD_URL, TEMPERATURE_DASHBOARD_URL
+from ......config import (
+    LIGHT_DASHBOARD_URL,
+    TEMPERATURE_DASHBOARD_URL,
+    # FLUIDS_DASHBOARD_URL,
+)
 
 # PY WINDOW
 # ///////////////////////////////////////////////////////////////
@@ -180,7 +184,6 @@ class SetupMainWindow:
         self.dashboard_light = QWebEngineView()
         self.dashboard_light.load(LIGHT_DASHBOARD_URL)
         self.dashboard_light.setFixedSize(1600, 900)
-        # self.dashboard_light.page().action(QWebEnginePage.Reload).trigger()
         self.ui.load_pages.page_light_layout.addChildWidget(self.dashboard_light)
 
         self.dashboard_temperature = QWebEngineView()
@@ -189,6 +192,19 @@ class SetupMainWindow:
         self.ui.load_pages.page_temperature_layout.addChildWidget(
             self.dashboard_temperature
         )
+
+        # self.dashboard_fluid = QWebEngineView()
+        # self.dashboard_fluid.load(FLUIDS_DASHBOARD_URL)
+        # self.dashboard_fluid.setFixedSize(1600, 900)
+        # self.ui.load_pages.fluid_dashboard_frame.addChildWidget(self.dashboard_fluid)
+
+        # CONNECT FLOW SLIDER TO VALUE TEXT
+        def slider_updated():
+            self.ui.load_pages.label_flow_value.setText(
+                str(self.ui.load_pages.flow_slider.value())
+            )
+
+        self.ui.load_pages.flow_slider.valueChanged.connect(slider_updated)
 
         # SET INITIAL PAGE / SET LEFT AND RIGHT COLUMN MENUS
         # ///////////////////////////////////////////////////////////////
@@ -200,24 +216,6 @@ class SetupMainWindow:
             icon_path=Functions.set_svg_icon("icon_settings.svg"),
         )
         MainFunctions.set_right_column_menu(self, self.ui.right_column.menu_1)
-
-        # ///////////////////////////////////////////////////////////////
-        # EXAMPLE CUSTOM WIDGETS
-        # Here are added the custom widgets to pages and columns that
-        # were created using Qt Designer.
-        # This is just an example and should be deleted when creating
-        # your application.
-        #
-        # OBJECTS FOR LOAD PAGES, LEFT AND RIGHT COLUMNS
-        # You can access objects inside Qt Designer projects using
-        # the objects below:
-        #
-        # <OBJECTS>
-        # LEFT COLUMN: self.ui.left_column.menus
-        # RIGHT COLUMN: self.ui.right_column
-        # LOAD PAGES: self.ui.load_pages
-        # </OBJECTS>
-        # ///////////////////////////////////////////////////////////////
 
         # LOAD SETTINGS
         # ///////////////////////////////////////////////////////////////

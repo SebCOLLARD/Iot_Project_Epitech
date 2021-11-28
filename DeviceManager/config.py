@@ -14,6 +14,10 @@ TEMPERATURE_DASHBOARD_URL = getenv(
     "TEMPERATURE_DASHBOARD_URL",
     "http://thingsboard.matthieu-rochette.fr/dashboard/b5102520-4ea4-11ec-96b5-35454323bc15?publicId=e942da30-4dd8-11ec-a7fc-35454323bc15",
 )
+# FLUIDS_DASHBOARD_URL = getenv(
+#     "FLUIDS_DASHBOARD_URL",
+#     "http://thingsboard.matthieu-rochette.fr/dashboard/a3618da0-4fe4-11ec-96b5-35454323bc15?publicId=e942da30-4dd8-11ec-a7fc-35454323bc15",
+# )
 
 COAP_PORT = int(getenv("COAP_PORT", 5683))
 OVERPASS_API_URL: str = getenv(
