@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 
-import paho.mqtt.client as mqtt
-
-from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.schedulers import SchedulerAlreadyRunningError
-from .devices import LightSensor
-import threading
 import json
+import threading
+
+import paho.mqtt.client as mqtt
+from apscheduler.schedulers import SchedulerAlreadyRunningError
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.interval import IntervalTrigger
+
+from .devices import LightSensor
 
 
 class LightMqtt:
@@ -56,6 +58,7 @@ class LightMqtt:
         """
         Receive data form thingsboard controller.
         """
+
         def wrapper(client, user_data, msg):
             """
             Call light sensor method to change the state, the intensity and the color temperature.
@@ -93,7 +96,7 @@ class LightMqtt:
         self.client.subscribe(self.topicRecived)
         self.client.on_message = self.receiver()
         self.job = self.scheduler.add_job(
-            self.send, "interval", seconds=LightMqtt._socketTimes
+            self.send, trigger=IntervalTrigger(seconds=LightMqtt._socketTimes)
         )
         try:
             self.scheduler.start()
@@ -105,6 +108,6 @@ class LightMqtt:
         """
         Stop all asynchronous processus.
         """
-        self.scheduler.remove_job(self.job.id)
+        self.scheduler.remove_all_jobs()
         self.client.disconnect()
         self.thread.join()

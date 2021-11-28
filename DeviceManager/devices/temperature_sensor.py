@@ -4,6 +4,8 @@ import json
 import random
 
 from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.interval import IntervalTrigger
+
 
 from DeviceManager.config import *
 from DeviceManager.protocols.http_protocol import http_protocol
@@ -23,7 +25,9 @@ class TemperatureSensor:
     def __init__(self, token: str, scheduler: BackgroundScheduler) -> None:
         self._token: str = token
         self._scheduler = scheduler
-        self._job = self._scheduler.add_job(self.send, "interval", seconds=1)
+        self._job = self._scheduler.add_job(
+            self.send, trigger=IntervalTrigger(seconds=1)
+        )
         self._temperature: float = 0.0
         self._humidity: int = 0
         self.generateData()
