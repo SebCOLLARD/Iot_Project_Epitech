@@ -11,19 +11,18 @@ class temperature_sensor_main:
         self._scheduler = scheduler
         self._job = self._scheduler.add_job(self.send, "interval", seconds = 2)
 
-    def send(self):
+    def send(self) -> None:
         self._tempSensor.generateData()
-        jsonData : str = self._tempSensor.rawToJSON()
-        self._tempSensor.sendData(jsonData, self._token)
+        self._tempSensor.send(self._token)
 
-    def getJob(self):
+    def getJob(self) -> None:
         return self._job
 
 scheduler : BackgroundScheduler = BackgroundScheduler()
 
-test = temperature_sensor_main('Ka8qufcCQW7HhPfaH9iz', scheduler)
-test1 = temperature_sensor_main('Ka8qufcCQW7HhPfaH9iz', scheduler)
-test11 = temperature_sensor_main('Ka8qufcCQW7HhPfaH9iz', scheduler)
+Sensor_1 = temperature_sensor_main('z1rVnmZC7JengspAeFdb', scheduler)
+Sensor_2 = temperature_sensor_main('1tU9nolQfpMccVRRbHhW', scheduler)
+Sensor_3 = temperature_sensor_main('AOfzo5udNbq3dg1XOvUi', scheduler)
 
 scheduler.start()
 while 42:

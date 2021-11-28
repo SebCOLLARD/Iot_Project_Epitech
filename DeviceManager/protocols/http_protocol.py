@@ -4,8 +4,8 @@ import requests
 from requests.structures import CaseInsensitiveDict
 
 class http_protocol:
+
     def post(url : str, dataJSON: str) -> str:
-        respons = requests.post(url, dataJSON)
         header = CaseInsensitiveDict()
         header["Content-Type"] = "application/json"
         respons = requests.post(url, headers = header, data = dataJSON)
