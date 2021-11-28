@@ -1,4 +1,9 @@
-import sys
+"""
+This file is originated from the PyOneDark project.
+While modifications may have been made, the credit goes to PyOneDark.
+"""
+
+
 import os
 from logging import debug
 

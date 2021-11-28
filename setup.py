@@ -10,12 +10,9 @@ build_options = {"include_files": ["./PyOneDark_settings.json", "./icon.ico"]}
 import sys
 
 base = "Win32GUI" if sys.platform == "win32" else None
+bin_name = "iot_device_manager.exe" if sys.platform == "win32" else "iot_device_manager"
 
-executables = [
-    Executable(
-        "main.py", base=base, target_name="iot_device_manager.exe", icon="icon.ico"
-    )
-]
+executables = [Executable("main.py", base=base, target_name=bin_name, icon="icon.ico")]
 
 setup(
     name="IoTDeviceManager",

@@ -1,25 +1,20 @@
 import os
 import sys
 
-from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.schedulers import SchedulerAlreadyRunningError
+from apscheduler.schedulers.background import BackgroundScheduler
 
-from ..gui.main_window import MainWindow, QApplication, QIcon
-from ..devices import FlowSensor, InkSensor, SubstanceSensor
 from ..config import *
+from ..devices import FlowSensor, InkSensor, SubstanceSensor, TemperatureSensor
+from ..gui.main_window import MainWindow, QApplication, QIcon
 from ..light_mqtt import LightMqtt
-from ..temperature_sensor import temperature_sensor
 from .connect_functions import *
 
 
 class QAppWithScheduler(QApplication):
-    def __init__(self, sched: BackgroundScheduler, args: list = None):
+    def __init__(self, args: list = None):
         super().__init__(args)
-        self._sched = sched
-        try:
-            self._sched.start()
-        except SchedulerAlreadyRunningError:
-            pass
+        self._sched = BackgroundScheduler()
         self.light_1 = LightMqtt(
             "v1/devices/me/attributes",
             "v1/devices/me/rpc/request/+",
@@ -36,16 +31,22 @@ class QAppWithScheduler(QApplication):
             LIGHT_3_TOKEN,
         )
 
-        self.flow_sensor = FlowSensor(sched, FLOW_SENSOR_TOKEN)
-        self.ink_sensor = InkSensor(sched, INK_SENSOR_TOKEN)
-        self.substance_sensor = SubstanceSensor(sched, SUBSTANCE_SENSOR_TOKEN)
+        self.flow_sensor = FlowSensor(self._sched, FLOW_SENSOR_TOKEN)
+        self.ink_sensor = InkSensor(self._sched, INK_SENSOR_TOKEN)
+        self.substance_sensor = SubstanceSensor(self._sched, SUBSTANCE_SENSOR_TOKEN)
 
-        self.temp_sensor_1 = temperature_sensor(TEMP_1_TOKEN, sched)
-        self.temp_sensor_2 = temperature_sensor(TEMP_2_TOKEN, sched)
-        self.temp_sensor_3 = temperature_sensor(TEMP_3_TOKEN, sched)
+        self.temp_sensor_1 = TemperatureSensor(TEMP_1_TOKEN, self._sched)
+        self.temp_sensor_2 = TemperatureSensor(TEMP_2_TOKEN, self._sched)
+        self.temp_sensor_3 = TemperatureSensor(TEMP_3_TOKEN, self._sched)
 
     def exec(self):
+        try:
+            self._sched.start()
+        except SchedulerAlreadyRunningError:
+            pass
+
         super().exec()
+
         self.light_1.stopThread()
         self.light_2.stopThread()
         self.light_3.stopThread()
@@ -57,7 +58,7 @@ def run_gui(args: list = None):
     if args is None:
         args = []
 
-    app = QAppWithScheduler(BackgroundScheduler(), args)
+    app = QAppWithScheduler(args)
     app.setWindowIcon(QIcon(os.path.join(os.getcwd(), "icon.ico")))
     window = MainWindow()
 

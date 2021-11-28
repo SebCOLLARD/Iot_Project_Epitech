@@ -10,7 +10,17 @@ from ..protocols import CoapThingsboardClient
 
 
 class FluidSensor:
+    """
+    Abstract class representing all fluid-related IoT sensors.
+    """
+
     def __init__(self, scheduler: BaseScheduler, token: str, **trigger_args) -> None:
+        """
+        Params:
+        - scheduler (BaseScheduler): An APScheduler scheduler class of any kind
+        - token (str): Thingsboard device access token
+        - trigger_params: Parameters for the IntervalTrigger object used in the scheduler. Default to seconds=1
+        """
         self.sched = scheduler
         self.client = CoapThingsboardClient()
         self.token = token
@@ -33,12 +43,20 @@ class FluidSensor:
         raise NotImplementedError()
 
     def get_callback(self):
+        """
+        Callback factory for the CoAP protocol calls.
+        """
+
         def cb(*args):
             debug("Inside callback. Received: " + str(args))
 
         return cb
 
     def _check_running(func):
+        """
+        Decorator to ensure `func` is run only if the sensor is enabled.
+        """
+
         def wrapper(self, *args, **kwargs) -> Any:
             if self.enabled:
                 return func(self, *args, **kwargs)
@@ -48,12 +66,17 @@ class FluidSensor:
         return wrapper
 
     @_check_running
-    def send_data(self, data=None):
+    def send_data(self, data: str = None):
+        """
+        Send data to the Thingsboard server.
+
+        Params:
+        - data (str): A JSON body to send to Thingsboard. If None or empty, random data is generated.
+        """
         if data is None or data == "":
             data = self.gen_data()
         self.client.post(self.token, data, self.get_callback(), timeout=10)
 
-    # @_check_running
     def change_job_params(self, new_json=None):
         """
         Change JSON values sent to server.
@@ -75,7 +98,6 @@ class FluidSensor:
         Toggle the sensor.
         Returns wether the toggling succeeded.
         """
-        debug("\n\n\n\nINSIDE TOGGLE\n\n\n\n")
         try:
             if self.enabled:
                 self.job = self.sched.pause_job(self.job.id)
@@ -89,6 +111,10 @@ class FluidSensor:
 
 
 class InkSensor(FluidSensor):
+    """
+    Represents an ink color sensor.
+    """
+
     _colors = ["cyan", "magenta", "yellow", "black", "red", "blue", "green"]
 
     def __init__(self, scheduler: BaseScheduler, token: str, **trigger_args) -> None:
@@ -109,6 +135,10 @@ class InkSensor(FluidSensor):
 
 
 class SubstanceSensor(FluidSensor):
+    """
+    Represents a substance kind sensor.
+    """
+
     _substances = ["alcohol", "water", "oil"]
 
     def __init__(self, scheduler: BaseScheduler, token: str, **trigger_args) -> None:
@@ -129,6 +159,10 @@ class SubstanceSensor(FluidSensor):
 
 
 class FlowSensor(FluidSensor):
+    """
+    Represents a flow sensor.
+    """
+
     def __init__(self, scheduler: BaseScheduler, token: str, **trigger_args) -> None:
         super().__init__(scheduler, token, **trigger_args)
         self.job = self.sched.add_job(self.send_data, trigger=self.default_trigger)
