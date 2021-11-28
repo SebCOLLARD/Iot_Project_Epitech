@@ -5,7 +5,7 @@ from cx_Freeze import setup, Executable
 
 # Dependencies are automatically detected, but it might need
 # fine tuning.
-build_options = {"include_files": ["./PyOneDark_settings.json"]}
+build_options = {"include_files": ["./PyOneDark_settings.json", "./icon.ico"]}
 
 import sys
 
