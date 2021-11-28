@@ -31,50 +31,53 @@
    </property>
    <item>
     <widget class="QStackedWidget" name="pages">
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
      <property name="currentIndex">
       <number>2</number>
      </property>
      <widget class="QWidget" name="page_light">
       <property name="styleSheet">
-       <string notr="true">font-size: 14pt; background: lightgreen;</string>
+       <string notr="true"/>
       </property>
       <layout class="QVBoxLayout" name="page_light_layout">
        <property name="spacing">
         <number>5</number>
        </property>
        <property name="leftMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
        <property name="topMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
        <property name="rightMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
       </layout>
      </widget>
      <widget class="QWidget" name="page_temperature">
       <property name="styleSheet">
-       <string notr="true">; background: orange;</string>
+       <string notr="true"/>
       </property>
       <layout class="QVBoxLayout" name="page_temperature_layout">
        <property name="spacing">
         <number>5</number>
        </property>
        <property name="leftMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
        <property name="topMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
        <property name="rightMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>5</number>
+        <number>0</number>
        </property>
       </layout>
      </widget>
@@ -85,8 +88,11 @@
       <layout class="QVBoxLayout" name="page_fluid_layout">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetNoConstraint</enum>
+         </property>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout">
+          <layout class="QVBoxLayout" name="InkLayout">
            <item>
             <widget class="QLabel" name="label">
              <property name="font">
@@ -110,6 +116,19 @@
             </widget>
            </item>
            <item>
+            <widget class="QCheckBox" name="ink_toggle">
+             <property name="layoutDirection">
+              <enum>Qt::RightToLeft</enum>
+             </property>
+             <property name="text">
+              <string>Enabled</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QLabel" name="label_4">
              <property name="text">
               <string>Choose a color:</string>
@@ -121,6 +140,11 @@
            </item>
            <item>
             <widget class="QComboBox" name="ink_color">
+             <item>
+              <property name="text">
+               <string/>
+              </property>
+             </item>
              <item>
               <property name="text">
                <string>cyan</string>
@@ -141,6 +165,21 @@
                <string>black</string>
               </property>
              </item>
+             <item>
+              <property name="text">
+               <string>red</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>blue</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>green</string>
+              </property>
+             </item>
             </widget>
            </item>
            <item>
@@ -159,6 +198,13 @@
              </property>
             </spacer>
            </item>
+           <item>
+            <widget class="QPushButton" name="resetInkButton">
+             <property name="text">
+              <string>Set to random</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </item>
          <item>
@@ -169,7 +215,7 @@
           </widget>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
+          <layout class="QVBoxLayout" name="FlowLayout">
            <item>
             <widget class="QLabel" name="label_2">
              <property name="font">
@@ -186,6 +232,19 @@
             </widget>
            </item>
            <item>
+            <widget class="QCheckBox" name="flow_toggle">
+             <property name="layoutDirection">
+              <enum>Qt::RightToLeft</enum>
+             </property>
+             <property name="text">
+              <string>Enabled</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QLabel" name="label_7">
              <property name="text">
               <string>1500</string>
@@ -195,7 +254,7 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
-              <widget class="QSlider" name="verticalSlider">
+              <widget class="QSlider" name="flow_slider">
                <property name="minimum">
                 <number>-200</number>
                </property>
@@ -236,9 +295,9 @@
               </widget>
              </item>
              <item>
-              <widget class="QLabel" name="label_6">
+              <widget class="QLabel" name="label_flow_value">
                <property name="text">
-                <string>&lt;value&gt;</string>
+                <string>0</string>
                </property>
               </widget>
              </item>
@@ -248,6 +307,13 @@
             <widget class="QLabel" name="label_8">
              <property name="text">
               <string>-200</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="resetFlowButton">
+             <property name="text">
+              <string>Set to random</string>
              </property>
             </widget>
            </item>
@@ -261,7 +327,7 @@
           </widget>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_3">
+          <layout class="QVBoxLayout" name="SubstanceLayout">
            <item>
             <widget class="QLabel" name="label_3">
              <property name="font">
@@ -278,6 +344,19 @@
             </widget>
            </item>
            <item>
+            <widget class="QCheckBox" name="substance_toggle">
+             <property name="layoutDirection">
+              <enum>Qt::RightToLeft</enum>
+             </property>
+             <property name="text">
+              <string>Enabled</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
             <widget class="QLabel" name="label_9">
              <property name="text">
               <string>Choose a substance type:</string>
@@ -285,7 +364,18 @@
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox">
+            <widget class="QComboBox" name="substance_combo">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <item>
+              <property name="text">
+               <string/>
+              </property>
+             </item>
              <item>
               <property name="text">
                <string>water</string>
@@ -315,6 +405,13 @@
               </size>
              </property>
             </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="resetSubstanceButton">
+             <property name="text">
+              <string>Set to random</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>

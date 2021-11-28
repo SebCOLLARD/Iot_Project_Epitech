@@ -1,17 +1,17 @@
 {
-    "app_name": "Device Manager",
-    "version": "v0.0.1",
-    "copyright": "Epitech 4th year students",
+    "app_name": "IoT Device Manager",
+    "version": "v1",
+    "copyright": "Sébastien Collard, Matthieu Rochette, Thomas Contini",
     "year": 2021,
     "theme_name": "default",
-    "custom_title_bar": true,
+    "custom_title_bar": false,
     "startup_size": [
-        1400,
-        720
+        1700,
+        950
     ],
     "minimum_size": [
-        960,
-        540
+        1700,
+        950
     ],
     "lef_menu_size": {
         "minimum": 50,

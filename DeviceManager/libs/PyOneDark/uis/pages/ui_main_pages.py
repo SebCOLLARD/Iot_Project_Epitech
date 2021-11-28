@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_pagesjvFMLG.ui'
+## Form generated from reading UI file 'main_pagesEQiBdW.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.2.1
 ##
@@ -15,9 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QHBoxLayout,
-    QLabel, QSizePolicy, QSlider, QSpacerItem,
-    QStackedWidget, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFrame,
+    QHBoxLayout, QLabel, QLayout, QPushButton,
+    QSizePolicy, QSlider, QSpacerItem, QStackedWidget,
+    QVBoxLayout, QWidget)
 
 class Ui_MainPages(object):
     def setupUi(self, MainPages):
@@ -30,21 +31,22 @@ class Ui_MainPages(object):
         self.main_pages_layout.setContentsMargins(5, 5, 5, 5)
         self.pages = QStackedWidget(MainPages)
         self.pages.setObjectName(u"pages")
+        self.pages.setLayoutDirection(Qt.LeftToRight)
         self.page_light = QWidget()
         self.page_light.setObjectName(u"page_light")
-        self.page_light.setStyleSheet(u"font-size: 14pt; background: lightgreen;")
+        self.page_light.setStyleSheet(u"")
         self.page_light_layout = QVBoxLayout(self.page_light)
         self.page_light_layout.setSpacing(5)
         self.page_light_layout.setObjectName(u"page_light_layout")
-        self.page_light_layout.setContentsMargins(5, 5, 5, 5)
+        self.page_light_layout.setContentsMargins(0, 0, 0, 0)
         self.pages.addWidget(self.page_light)
         self.page_temperature = QWidget()
         self.page_temperature.setObjectName(u"page_temperature")
-        self.page_temperature.setStyleSheet(u"; background: orange;")
+        self.page_temperature.setStyleSheet(u"")
         self.page_temperature_layout = QVBoxLayout(self.page_temperature)
         self.page_temperature_layout.setSpacing(5)
         self.page_temperature_layout.setObjectName(u"page_temperature_layout")
-        self.page_temperature_layout.setContentsMargins(5, 5, 5, 5)
+        self.page_temperature_layout.setContentsMargins(0, 0, 0, 0)
         self.pages.addWidget(self.page_temperature)
         self.page_fluid = QWidget()
         self.page_fluid.setObjectName(u"page_fluid")
@@ -53,8 +55,9 @@ class Ui_MainPages(object):
         self.page_fluid_layout.setObjectName(u"page_fluid_layout")
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.horizontalLayout.setSizeConstraint(QLayout.SetNoConstraint)
+        self.InkLayout = QVBoxLayout()
+        self.InkLayout.setObjectName(u"InkLayout")
         self.label = QLabel(self.page_fluid)
         self.label.setObjectName(u"label")
         font = QFont()
@@ -65,29 +68,45 @@ class Ui_MainPages(object):
         self.label.setScaledContents(False)
         self.label.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
 
-        self.verticalLayout.addWidget(self.label)
+        self.InkLayout.addWidget(self.label)
+
+        self.ink_toggle = QCheckBox(self.page_fluid)
+        self.ink_toggle.setObjectName(u"ink_toggle")
+        self.ink_toggle.setLayoutDirection(Qt.RightToLeft)
+        self.ink_toggle.setChecked(True)
+
+        self.InkLayout.addWidget(self.ink_toggle)
 
         self.label_4 = QLabel(self.page_fluid)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setAlignment(Qt.AlignBottom|Qt.AlignLeading|Qt.AlignLeft)
 
-        self.verticalLayout.addWidget(self.label_4)
+        self.InkLayout.addWidget(self.label_4)
 
         self.ink_color = QComboBox(self.page_fluid)
         self.ink_color.addItem("")
         self.ink_color.addItem("")
         self.ink_color.addItem("")
         self.ink_color.addItem("")
+        self.ink_color.addItem("")
+        self.ink_color.addItem("")
+        self.ink_color.addItem("")
+        self.ink_color.addItem("")
         self.ink_color.setObjectName(u"ink_color")
 
-        self.verticalLayout.addWidget(self.ink_color)
+        self.InkLayout.addWidget(self.ink_color)
 
         self.verticalSpacer = QSpacerItem(20, 30, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout.addItem(self.verticalSpacer)
+        self.InkLayout.addItem(self.verticalSpacer)
+
+        self.resetInkButton = QPushButton(self.page_fluid)
+        self.resetInkButton.setObjectName(u"resetInkButton")
+
+        self.InkLayout.addWidget(self.resetInkButton)
 
 
-        self.horizontalLayout.addLayout(self.verticalLayout)
+        self.horizontalLayout.addLayout(self.InkLayout)
 
         self.line_sep_fluid_0 = QFrame(self.page_fluid)
         self.line_sep_fluid_0.setObjectName(u"line_sep_fluid_0")
@@ -96,8 +115,8 @@ class Ui_MainPages(object):
 
         self.horizontalLayout.addWidget(self.line_sep_fluid_0)
 
-        self.verticalLayout_2 = QVBoxLayout()
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.FlowLayout = QVBoxLayout()
+        self.FlowLayout.setObjectName(u"FlowLayout")
         self.label_2 = QLabel(self.page_fluid)
         self.label_2.setObjectName(u"label_2")
         font1 = QFont()
@@ -105,28 +124,35 @@ class Ui_MainPages(object):
         self.label_2.setFont(font1)
         self.label_2.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
 
-        self.verticalLayout_2.addWidget(self.label_2)
+        self.FlowLayout.addWidget(self.label_2)
+
+        self.flow_toggle = QCheckBox(self.page_fluid)
+        self.flow_toggle.setObjectName(u"flow_toggle")
+        self.flow_toggle.setLayoutDirection(Qt.RightToLeft)
+        self.flow_toggle.setChecked(True)
+
+        self.FlowLayout.addWidget(self.flow_toggle)
 
         self.label_7 = QLabel(self.page_fluid)
         self.label_7.setObjectName(u"label_7")
 
-        self.verticalLayout_2.addWidget(self.label_7)
+        self.FlowLayout.addWidget(self.label_7)
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.verticalSlider = QSlider(self.page_fluid)
-        self.verticalSlider.setObjectName(u"verticalSlider")
-        self.verticalSlider.setMinimum(-200)
-        self.verticalSlider.setMaximum(1500)
-        self.verticalSlider.setSingleStep(10)
-        self.verticalSlider.setPageStep(100)
-        self.verticalSlider.setOrientation(Qt.Vertical)
-        self.verticalSlider.setInvertedAppearance(False)
-        self.verticalSlider.setInvertedControls(False)
-        self.verticalSlider.setTickPosition(QSlider.TicksAbove)
-        self.verticalSlider.setTickInterval(100)
+        self.flow_slider = QSlider(self.page_fluid)
+        self.flow_slider.setObjectName(u"flow_slider")
+        self.flow_slider.setMinimum(-200)
+        self.flow_slider.setMaximum(1500)
+        self.flow_slider.setSingleStep(10)
+        self.flow_slider.setPageStep(100)
+        self.flow_slider.setOrientation(Qt.Vertical)
+        self.flow_slider.setInvertedAppearance(False)
+        self.flow_slider.setInvertedControls(False)
+        self.flow_slider.setTickPosition(QSlider.TicksAbove)
+        self.flow_slider.setTickInterval(100)
 
-        self.horizontalLayout_2.addWidget(self.verticalSlider)
+        self.horizontalLayout_2.addWidget(self.flow_slider)
 
         self.label_5 = QLabel(self.page_fluid)
         self.label_5.setObjectName(u"label_5")
@@ -134,21 +160,26 @@ class Ui_MainPages(object):
 
         self.horizontalLayout_2.addWidget(self.label_5)
 
-        self.label_6 = QLabel(self.page_fluid)
-        self.label_6.setObjectName(u"label_6")
+        self.label_flow_value = QLabel(self.page_fluid)
+        self.label_flow_value.setObjectName(u"label_flow_value")
 
-        self.horizontalLayout_2.addWidget(self.label_6)
+        self.horizontalLayout_2.addWidget(self.label_flow_value)
 
 
-        self.verticalLayout_2.addLayout(self.horizontalLayout_2)
+        self.FlowLayout.addLayout(self.horizontalLayout_2)
 
         self.label_8 = QLabel(self.page_fluid)
         self.label_8.setObjectName(u"label_8")
 
-        self.verticalLayout_2.addWidget(self.label_8)
+        self.FlowLayout.addWidget(self.label_8)
+
+        self.resetFlowButton = QPushButton(self.page_fluid)
+        self.resetFlowButton.setObjectName(u"resetFlowButton")
+
+        self.FlowLayout.addWidget(self.resetFlowButton)
 
 
-        self.horizontalLayout.addLayout(self.verticalLayout_2)
+        self.horizontalLayout.addLayout(self.FlowLayout)
 
         self.line = QFrame(self.page_fluid)
         self.line.setObjectName(u"line")
@@ -157,34 +188,52 @@ class Ui_MainPages(object):
 
         self.horizontalLayout.addWidget(self.line)
 
-        self.verticalLayout_3 = QVBoxLayout()
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.SubstanceLayout = QVBoxLayout()
+        self.SubstanceLayout.setObjectName(u"SubstanceLayout")
         self.label_3 = QLabel(self.page_fluid)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setFont(font1)
         self.label_3.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
 
-        self.verticalLayout_3.addWidget(self.label_3)
+        self.SubstanceLayout.addWidget(self.label_3)
+
+        self.substance_toggle = QCheckBox(self.page_fluid)
+        self.substance_toggle.setObjectName(u"substance_toggle")
+        self.substance_toggle.setLayoutDirection(Qt.RightToLeft)
+        self.substance_toggle.setChecked(True)
+
+        self.SubstanceLayout.addWidget(self.substance_toggle)
 
         self.label_9 = QLabel(self.page_fluid)
         self.label_9.setObjectName(u"label_9")
 
-        self.verticalLayout_3.addWidget(self.label_9)
+        self.SubstanceLayout.addWidget(self.label_9)
 
-        self.comboBox = QComboBox(self.page_fluid)
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.setObjectName(u"comboBox")
+        self.substance_combo = QComboBox(self.page_fluid)
+        self.substance_combo.addItem("")
+        self.substance_combo.addItem("")
+        self.substance_combo.addItem("")
+        self.substance_combo.addItem("")
+        self.substance_combo.setObjectName(u"substance_combo")
+        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.substance_combo.sizePolicy().hasHeightForWidth())
+        self.substance_combo.setSizePolicy(sizePolicy)
 
-        self.verticalLayout_3.addWidget(self.comboBox)
+        self.SubstanceLayout.addWidget(self.substance_combo)
 
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_3.addItem(self.verticalSpacer_2)
+        self.SubstanceLayout.addItem(self.verticalSpacer_2)
+
+        self.resetSubstanceButton = QPushButton(self.page_fluid)
+        self.resetSubstanceButton.setObjectName(u"resetSubstanceButton")
+
+        self.SubstanceLayout.addWidget(self.resetSubstanceButton)
 
 
-        self.horizontalLayout.addLayout(self.verticalLayout_3)
+        self.horizontalLayout.addLayout(self.SubstanceLayout)
 
 
         self.page_fluid_layout.addLayout(self.horizontalLayout)
@@ -205,22 +254,33 @@ class Ui_MainPages(object):
     def retranslateUi(self, MainPages):
         MainPages.setWindowTitle(QCoreApplication.translate("MainPages", u"Form", None))
         self.label.setText(QCoreApplication.translate("MainPages", u"Ink", None))
+        self.ink_toggle.setText(QCoreApplication.translate("MainPages", u"Enabled", None))
         self.label_4.setText(QCoreApplication.translate("MainPages", u"Choose a color:", None))
-        self.ink_color.setItemText(0, QCoreApplication.translate("MainPages", u"cyan", None))
-        self.ink_color.setItemText(1, QCoreApplication.translate("MainPages", u"yellow", None))
-        self.ink_color.setItemText(2, QCoreApplication.translate("MainPages", u"magenta", None))
-        self.ink_color.setItemText(3, QCoreApplication.translate("MainPages", u"black", None))
+        self.ink_color.setItemText(0, "")
+        self.ink_color.setItemText(1, QCoreApplication.translate("MainPages", u"cyan", None))
+        self.ink_color.setItemText(2, QCoreApplication.translate("MainPages", u"yellow", None))
+        self.ink_color.setItemText(3, QCoreApplication.translate("MainPages", u"magenta", None))
+        self.ink_color.setItemText(4, QCoreApplication.translate("MainPages", u"black", None))
+        self.ink_color.setItemText(5, QCoreApplication.translate("MainPages", u"red", None))
+        self.ink_color.setItemText(6, QCoreApplication.translate("MainPages", u"blue", None))
+        self.ink_color.setItemText(7, QCoreApplication.translate("MainPages", u"green", None))
 
+        self.resetInkButton.setText(QCoreApplication.translate("MainPages", u"Set to random", None))
         self.label_2.setText(QCoreApplication.translate("MainPages", u"Flow", None))
+        self.flow_toggle.setText(QCoreApplication.translate("MainPages", u"Enabled", None))
         self.label_7.setText(QCoreApplication.translate("MainPages", u"1500", None))
         self.label_5.setText(QCoreApplication.translate("MainPages", u"Flow in ml/s:", None))
-        self.label_6.setText(QCoreApplication.translate("MainPages", u"<value>", None))
+        self.label_flow_value.setText(QCoreApplication.translate("MainPages", u"0", None))
         self.label_8.setText(QCoreApplication.translate("MainPages", u"-200", None))
+        self.resetFlowButton.setText(QCoreApplication.translate("MainPages", u"Set to random", None))
         self.label_3.setText(QCoreApplication.translate("MainPages", u"Substance", None))
+        self.substance_toggle.setText(QCoreApplication.translate("MainPages", u"Enabled", None))
         self.label_9.setText(QCoreApplication.translate("MainPages", u"Choose a substance type:", None))
-        self.comboBox.setItemText(0, QCoreApplication.translate("MainPages", u"water", None))
-        self.comboBox.setItemText(1, QCoreApplication.translate("MainPages", u"alcohol", None))
-        self.comboBox.setItemText(2, QCoreApplication.translate("MainPages", u"oil", None))
+        self.substance_combo.setItemText(0, "")
+        self.substance_combo.setItemText(1, QCoreApplication.translate("MainPages", u"water", None))
+        self.substance_combo.setItemText(2, QCoreApplication.translate("MainPages", u"alcohol", None))
+        self.substance_combo.setItemText(3, QCoreApplication.translate("MainPages", u"oil", None))
 
+        self.resetSubstanceButton.setText(QCoreApplication.translate("MainPages", u"Set to random", None))
     # retranslateUi
 

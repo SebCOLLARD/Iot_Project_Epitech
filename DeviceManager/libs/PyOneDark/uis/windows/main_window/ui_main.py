@@ -68,12 +68,12 @@ class UI_MainWindow(object):
         self.themes = themes.items
 
         # SET INITIAL PARAMETERS
-        parent.resize(
+        parent.setFixedSize(
             self.settings["startup_size"][0], self.settings["startup_size"][1]
         )
-        parent.setMinimumSize(
-            self.settings["minimum_size"][0], self.settings["minimum_size"][1]
-        )
+        # parent.setMinimumSize(
+        #     self.settings["minimum_size"][0], self.settings["minimum_size"][1]
+        # )
 
         # SET CENTRAL WIDGET
         # Add central widget to app
@@ -308,7 +308,7 @@ class UI_MainWindow(object):
 
         # ADD WIDGETS TO RIGHT LAYOUT
         # ///////////////////////////////////////////////////////////////
-        self.right_app_layout.addWidget(self.title_bar_frame)
+        # self.right_app_layout.addWidget(self.title_bar_frame)
         self.right_app_layout.addWidget(self.content_area_frame)
         self.right_app_layout.addWidget(self.credits_frame)
 
