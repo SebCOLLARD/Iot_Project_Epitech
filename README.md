@@ -150,6 +150,7 @@ By default, the project uses a web deployment with public dashboards, hosted **[
 ## Launch locally
 Make sure docker-compose is installed (instructions [here](https://docs.docker.com/compose/install/)).
 
+*Warning: the locally deployed instance will be empty. The configurations, devices etc. available on the publically deployed server will not be available by default.*
 Simply run the following command:
 ```bash
 docker-compose up
