@@ -193,22 +193,22 @@ Internily to Thongsboard we create rules to verifying the data.
 When the data is note corresponding it's create an alarm.
 Depending on the alarm type the alarm severity change.
 
-## Humidity Alarm
+### Humidity Alarm
 The humidity alarm verify of the humidity is above 90%.
 
-## Temperature Critcal Alarm
+### Temperature Critcal Alarm
 This rule create an alarm when the temperature is invalid.
 Invalid temperature is when the temperature is when the temperature is below -10°C and above 35°C.
 
-## Temeperature Major Alamr Cold
+### Temeperature Major Alamr Cold
 When the temperature is between -10°C and -5°C create an alarm.
 
-## Temeperature Major Alamr Hot
+### Temeperature Major Alamr Hot
 When the temperature is between 30°C and 35°C create an alarm.
 
-## Delta Temperature
+### Delta Temperature
 Calculate the delta between the temperature of 10 minutes ago and now.
 When the result of the delta is above 20°C an alarm is created.
 
-## Alarm Specific Temperature
+### Alarm Specific Temperature
 When the temperature equal to 0 an alarm is created.
