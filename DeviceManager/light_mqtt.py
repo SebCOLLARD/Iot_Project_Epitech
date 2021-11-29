@@ -9,6 +9,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
 
 from .devices import LightSensor
+from .config import THINGSBOARD_URL
 
 
 class LightMqtt:
@@ -16,7 +17,7 @@ class LightMqtt:
     Implementation of MQTT protocol to connect the device to the server.
     """
 
-    _ip = "thingsboard.matthieu-rochette.fr"
+    _ip = THINGSBOARD_URL
     _port = 1883
     _socketTimes = 1
 
