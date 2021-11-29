@@ -217,6 +217,19 @@ When the result of the delta is above 20°C an alarm is created.
 ### Alarm Specific Temperature
 When the temperature equal to 0 an alarm is created.
 
+# Devices
+
+### Temperature & Humidity with location sensor
+The temperature & humidity sensor send to server the detected temperature and humidity.
+
+### Light sensor
+The light sensor detect the light state, intesity and color temperature.
+Through the dashboard the user can turn on.off the light, change the intensity and the color temperature.
+
+### Fluid sensor
+The fluid sensor detect the fluid type, color and calculate the flow in ml/s.
+Through the dashboard the user can determine the color and the type of the fluid. And can also set the flow. 
+
 # Example Telemtry Data
 All telemetry data is send to thingsboard in JSON format.
 
