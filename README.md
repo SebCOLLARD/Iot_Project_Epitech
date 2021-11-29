@@ -43,6 +43,7 @@ Table of contents
 - [Thingsboard server](#thingsboard-server)
   - [Launch locally](#launch-locally)
   - [Deploy](#deploy)
+  - [Configure the Thingsboard server from scratch](#configure-the-thingsboard-server-from-scratch)
   
 
 
@@ -124,11 +125,20 @@ The interface is compose of 3 tabs:
 ![Temperature interface](https://i.ibb.co/N79Y55s/Screenshot-5.png)
 ### Fluids
 ![Fluids interface](https://i.ibb.co/tJ1LW4W/Screenshot-6.png)
+The fluids lets you control 3 fluid sensors:
+- an ink color sensor,
+- a flow sensor (in milliliters per second),
+- a fluid substance (=kind) sensor.
+
+This page does not implement the Thingsboard telemetry dashboard for these sensors directly, so there are two ways of accessing it:
+- opening the dashboard directly in a web browser thanks to this [link](http://thingsboard.matthieu-rochette.fr/dashboard/a3618da0-4fe4-11ec-96b5-35454323bc15?publicId=e942da30-4dd8-11ec-a7fc-35454323bc15),
+- or going to one of the other two pages of the GUI ([Lights](#lights) or [Temperature](#temperature)) and change the dashboard displayed thanks to the menu in the top-right corner of the webview.
+
 
 ---
 # Thingsboard server
 The thingsboard server is deployed using Docker Compose.
-By default, the project uses a web deployment with public dashboards, hosted [here](http://thingsboard.matthieu-rochette.fr) (the server might not be available at the moment you read those lines, presumably because the project has become quite old).
+By default, the project uses a web deployment with public dashboards, hosted **[here](http://thingsboard.matthieu-rochette.fr)** (the server might not be available at the moment you read those lines, presumably because the project has become quite old).
 
 ## Launch locally
 Make sure docker-compose is installed (instructions [here](https://docs.docker.com/compose/install/)).
@@ -142,3 +152,7 @@ docker-compose up
 **Make sure to configure the Device Manager to use the correct URL (in `./DeviceManager/config.py` or via a `./.env` file. For a local deployment, that would be `http://localhost:8080`.**
 ## Deploy
 You can either deploy directly on your server by forwarding the port you want to use in the `./docker-compose.yml` file, or put it behind a reverse proxy (example for NGINX in `./nginx.conf`).
+
+## Configure the Thingsboard server from scratch
+If you configure your own Thingsboard instance, you can use the files in `./Thingsboard/` to import dashboards and rules from this project.
+However, you will have to manually create the devices (a total of 9: 3 lights, 3 temperature sensors, 3 fluid sensors (1 of each kind)) and configure the GUI manually with the correct access tokens (cf. [this section](#configure-the-device-manager)).

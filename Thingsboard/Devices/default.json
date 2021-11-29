@@ -1,0 +1,28 @@
+{
+  "name": "default",
+  "description": "Default device profile",
+  "image": null,
+  "type": "DEFAULT",
+  "transportType": "DEFAULT",
+  "provisionType": "DISABLED",
+  "defaultRuleChainId": null,
+  "defaultDashboardId": null,
+  "defaultQueueName": null,
+  "profileData": {
+    "configuration": {
+      "type": "DEFAULT"
+    },
+    "transportConfiguration": {
+      "type": "DEFAULT"
+    },
+    "provisionConfiguration": {
+      "type": "DISABLED",
+      "provisionDeviceSecret": null
+    },
+    "alarms": null
+  },
+  "provisionDeviceKey": null,
+  "firmwareId": null,
+  "softwareId": null,
+  "default": false
+}
