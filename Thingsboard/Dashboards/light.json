@@ -1,0 +1,1437 @@
+{
+  "title": "Light",
+  "image": null,
+  "mobileHide": false,
+  "mobileOrder": null,
+  "configuration": {
+    "description": "",
+    "widgets": {
+      "bb183501-a52d-f03f-3f13-7444911fddb6": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "led_indicator",
+        "type": "rpc",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 2.5,
+        "sizeY": 2.5,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "initialValue": true,
+            "title": "Led indicator",
+            "ledColor": "#4caf50",
+            "valueAttribute": "led",
+            "retrieveValueMethod": "attribute",
+            "parseValueFunction": "return data ? true : false;",
+            "performCheckStatus": false,
+            "checkStatusMethod": "checkStatus"
+          },
+          "title": "New Led indicator",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 2,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "0fe9289b-bc4c-612f-6548-801f5d74c971"
+          ],
+          "units": "",
+          "noDataDisplayMessage": ""
+        },
+        "row": 0,
+        "col": 0,
+        "id": "bb183501-a52d-f03f-3f13-7444911fddb6"
+      },
+      "3e02906a-fcab-13ac-6db8-cd431a153fe6": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "round_switch",
+        "type": "rpc",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 2.5,
+        "sizeY": 2,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "initialValue": true,
+            "getValueMethod": "getValue",
+            "setValueMethod": "XBe10xeaw8fpF6bqRr7M_switch",
+            "retrieveValueMethod": "attribute",
+            "valueKey": "state",
+            "parseValueFunction": "return data ? true : false;",
+            "convertValueFunction": "return value;",
+            "title": "Switch On/Off"
+          },
+          "title": "New Round switch",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 2,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "0fe9289b-bc4c-612f-6548-801f5d74c971"
+          ]
+        },
+        "row": 0,
+        "col": 0,
+        "id": "3e02906a-fcab-13ac-6db8-cd431a153fe6"
+      },
+      "a853bee1-d6d5-9cd4-df6d-268c10af9be9": {
+        "isSystemType": true,
+        "bundleAlias": "digital_gauges",
+        "typeAlias": "mini_gauge_justgage",
+        "type": "latest",
+        "title": "Mini gauge",
+        "sizeX": 4,
+        "sizeY": 4,
+        "row": 0,
+        "col": 8,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "entityAliasId": "0fe9289b-bc4c-612f-6548-801f5d74c971",
+              "dataKeys": [
+                {
+                  "name": "intensity",
+                  "label": "intensity",
+                  "type": "attribute",
+                  "color": "#2196f3",
+                  "settings": {},
+                  "_hash": 0.7428502516747202
+                }
+              ]
+            }
+          ],
+          "timewindow": {
+            "realtime": {
+              "timewindowMs": 60000
+            }
+          },
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "maxValue": 100,
+            "minValue": 0,
+            "donutStartAngle": 90,
+            "showValue": true,
+            "showMinMax": true,
+            "gaugeWidthScale": 0.75,
+            "levelColors": [],
+            "titleFont": {
+              "family": "Roboto",
+              "size": 12,
+              "style": "normal",
+              "weight": "500"
+            },
+            "labelFont": {
+              "family": "Roboto",
+              "style": "normal",
+              "weight": "500",
+              "size": 8
+            },
+            "valueFont": {
+              "family": "Roboto",
+              "style": "normal",
+              "weight": "500",
+              "size": 20
+            },
+            "minMaxFont": {
+              "family": "Segment7Standard",
+              "size": 12,
+              "style": "normal",
+              "weight": "500"
+            },
+            "neonGlowBrightness": 0,
+            "dashThickness": 0,
+            "roundedLineCap": true,
+            "gaugeType": "donut",
+            "timestampFormat": "yyyy-MM-dd HH:mm:ss",
+            "animation": true,
+            "animationDuration": 500,
+            "animationRule": "linear",
+            "showTitle": true,
+            "title": "Intensity"
+          },
+          "title": "Mini gauge",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "widgetStyle": {},
+          "noDataDisplayMessage": "",
+          "showLegend": false
+        },
+        "id": "a853bee1-d6d5-9cd4-df6d-268c10af9be9"
+      },
+      "aaed2273-4f48-0282-c812-40c2a7576529": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "led_indicator",
+        "type": "rpc",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 2.5,
+        "sizeY": 2.5,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "initialValue": true,
+            "title": "Led indicator",
+            "ledColor": "#4caf50",
+            "valueAttribute": "led",
+            "retrieveValueMethod": "attribute",
+            "parseValueFunction": "return data ? true : false;",
+            "performCheckStatus": false,
+            "checkStatusMethod": "checkStatus"
+          },
+          "title": "New Led indicator",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 2,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "dd732699-6e08-908f-7007-a5e33aca5119"
+          ]
+        },
+        "row": 0,
+        "col": 0,
+        "id": "aaed2273-4f48-0282-c812-40c2a7576529"
+      },
+      "bd26e6ce-8f4d-6243-cc91-ea9cc1c6c75b": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "round_switch",
+        "type": "rpc",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 2.5,
+        "sizeY": 2,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "initialValue": true,
+            "getValueMethod": "getValue",
+            "setValueMethod": "ZsaUJIHhsCDmobiHcc3u_switch",
+            "title": "Switch On/Off",
+            "retrieveValueMethod": "attribute",
+            "valueKey": "state",
+            "parseValueFunction": "return data ? true : false;",
+            "convertValueFunction": "return value;"
+          },
+          "title": "New Round switch",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 2,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "dd732699-6e08-908f-7007-a5e33aca5119"
+          ]
+        },
+        "row": 0,
+        "col": 0,
+        "id": "bd26e6ce-8f4d-6243-cc91-ea9cc1c6c75b"
+      },
+      "18429f9f-123d-9c5b-c98b-139766ea9262": {
+        "isSystemType": true,
+        "bundleAlias": "digital_gauges",
+        "typeAlias": "mini_gauge_justgage",
+        "type": "latest",
+        "title": "Mini gauge",
+        "sizeX": 4,
+        "sizeY": 4,
+        "row": 0,
+        "col": 8,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "entityAliasId": "dd732699-6e08-908f-7007-a5e33aca5119",
+              "dataKeys": [
+                {
+                  "name": "intensity",
+                  "label": "intensity",
+                  "type": "attribute",
+                  "color": "#2196f3",
+                  "settings": {},
+                  "_hash": 0.41679464153937473
+                }
+              ]
+            }
+          ],
+          "timewindow": {
+            "realtime": {
+              "timewindowMs": 60000
+            }
+          },
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "maxValue": 100,
+            "minValue": 0,
+            "donutStartAngle": 90,
+            "showValue": true,
+            "showMinMax": true,
+            "gaugeWidthScale": 0.75,
+            "levelColors": [],
+            "titleFont": {
+              "family": "Roboto",
+              "size": 12,
+              "style": "normal",
+              "weight": "500"
+            },
+            "labelFont": {
+              "family": "Roboto",
+              "size": 8,
+              "style": "normal",
+              "weight": "500"
+            },
+            "valueFont": {
+              "family": "Roboto",
+              "style": "normal",
+              "weight": "500",
+              "size": 20
+            },
+            "minMaxFont": {
+              "family": "Segment7Standard",
+              "size": 12,
+              "style": "normal",
+              "weight": "500"
+            },
+            "neonGlowBrightness": 0,
+            "dashThickness": 0,
+            "roundedLineCap": true,
+            "gaugeType": "donut",
+            "timestampFormat": "yyyy-MM-dd HH:mm:ss",
+            "animation": true,
+            "animationDuration": 500,
+            "animationRule": "linear",
+            "showTitle": true,
+            "title": "Intensity"
+          },
+          "title": "Mini gauge",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "widgetStyle": {},
+          "noDataDisplayMessage": "",
+          "showLegend": false
+        },
+        "id": "18429f9f-123d-9c5b-c98b-139766ea9262"
+      },
+      "932fafd4-52c0-35cb-1a92-5bd1fbe3f6bb": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "round_switch",
+        "type": "rpc",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 2.5,
+        "sizeY": 2,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "initialValue": true,
+            "getValueMethod": "getValue",
+            "setValueMethod": "8aTocC8taPVNsYRKLjWz_switch",
+            "title": "Switch On/Off",
+            "retrieveValueMethod": "attribute",
+            "valueKey": "state",
+            "parseValueFunction": "return data ? true : false;",
+            "convertValueFunction": "return value;"
+          },
+          "title": "New Round switch",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 2,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "4347a188-387e-f044-bd70-acde83331a80"
+          ]
+        },
+        "row": 0,
+        "col": 0,
+        "id": "932fafd4-52c0-35cb-1a92-5bd1fbe3f6bb"
+      },
+      "c06a38ac-ce17-3ef2-a7da-cca427e64c36": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "led_indicator",
+        "type": "rpc",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 2.5,
+        "sizeY": 2.5,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "initialValue": true,
+            "title": "Led indicator",
+            "ledColor": "#4caf50",
+            "valueAttribute": "led",
+            "retrieveValueMethod": "attribute",
+            "parseValueFunction": "return data ? true : false;",
+            "performCheckStatus": false,
+            "checkStatusMethod": "checkStatus"
+          },
+          "title": "New Led indicator",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 2,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "4347a188-387e-f044-bd70-acde83331a80"
+          ]
+        },
+        "row": 0,
+        "col": 0,
+        "id": "c06a38ac-ce17-3ef2-a7da-cca427e64c36"
+      },
+      "faeb64c8-3a65-c0e8-407a-7f2920ff9068": {
+        "isSystemType": true,
+        "bundleAlias": "digital_gauges",
+        "typeAlias": "mini_gauge_justgage",
+        "type": "latest",
+        "title": "Mini gauge",
+        "sizeX": 4,
+        "sizeY": 4,
+        "row": 0,
+        "col": 8,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "entityAliasId": "4347a188-387e-f044-bd70-acde83331a80",
+              "dataKeys": [
+                {
+                  "name": "intensity",
+                  "label": "intensity",
+                  "type": "attribute",
+                  "color": "#2196f3",
+                  "settings": {},
+                  "_hash": 0.3063620071146126
+                }
+              ]
+            }
+          ],
+          "timewindow": {
+            "realtime": {
+              "timewindowMs": 60000
+            }
+          },
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "maxValue": 100,
+            "minValue": 0,
+            "donutStartAngle": 90,
+            "showValue": true,
+            "showMinMax": true,
+            "gaugeWidthScale": 0.75,
+            "levelColors": [],
+            "titleFont": {
+              "family": "Roboto",
+              "size": 12,
+              "style": "normal",
+              "weight": "500"
+            },
+            "labelFont": {
+              "family": "Roboto",
+              "size": 8,
+              "style": "normal",
+              "weight": "500"
+            },
+            "valueFont": {
+              "family": "Roboto",
+              "style": "normal",
+              "weight": "500",
+              "size": 20
+            },
+            "minMaxFont": {
+              "family": "Segment7Standard",
+              "size": 12,
+              "style": "normal",
+              "weight": "500"
+            },
+            "neonGlowBrightness": 0,
+            "dashThickness": 0,
+            "roundedLineCap": true,
+            "gaugeType": "donut",
+            "timestampFormat": "yyyy-MM-dd HH:mm:ss",
+            "animation": true,
+            "animationDuration": 500,
+            "animationRule": "linear",
+            "title": "Intensity",
+            "showTitle": true
+          },
+          "title": "Mini gauge",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "widgetStyle": {},
+          "noDataDisplayMessage": "",
+          "showLegend": false
+        },
+        "id": "faeb64c8-3a65-c0e8-407a-7f2920ff9068"
+      },
+      "c847c7af-61ab-bd35-c071-885a41e57b23": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "knob_control",
+        "type": "rpc",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 5,
+        "sizeY": 4.5,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "maxValue": 100,
+            "initialValue": 0,
+            "minValue": 0,
+            "getValueMethod": "getValue",
+            "setValueMethod": "XBe10xeaw8fpF6bqRr7M_intensity",
+            "title": "Intensity Control"
+          },
+          "title": "New Knob Control",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 2,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "0fe9289b-bc4c-612f-6548-801f5d74c971"
+          ]
+        },
+        "row": 0,
+        "col": 0,
+        "id": "c847c7af-61ab-bd35-c071-885a41e57b23"
+      },
+      "bc0a0fb0-589e-de61-7efb-380ff27fc7ba": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "knob_control",
+        "type": "rpc",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 5,
+        "sizeY": 4.5,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "maxValue": 100,
+            "initialValue": 0,
+            "minValue": 0,
+            "title": "Intensity Control",
+            "getValueMethod": "getValue",
+            "setValueMethod": "ZsaUJIHhsCDmobiHcc3u_intensity"
+          },
+          "title": "New Knob Control",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 2,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "dd732699-6e08-908f-7007-a5e33aca5119"
+          ]
+        },
+        "row": 0,
+        "col": 0,
+        "id": "bc0a0fb0-589e-de61-7efb-380ff27fc7ba"
+      },
+      "6585449a-3013-6893-6ea6-d94748008f52": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "knob_control",
+        "type": "rpc",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 5,
+        "sizeY": 4.5,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "maxValue": 100,
+            "initialValue": 0,
+            "minValue": 0,
+            "title": "Intensity Control",
+            "getValueMethod": "getValue",
+            "setValueMethod": "8aTocC8taPVNsYRKLjWz_intensity"
+          },
+          "title": "New Knob Control",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 2,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "4347a188-387e-f044-bd70-acde83331a80"
+          ]
+        },
+        "row": 0,
+        "col": 0,
+        "id": "6585449a-3013-6893-6ea6-d94748008f52"
+      },
+      "968181b7-f325-426f-a17c-0eb1dfbc39e6": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "knob_control",
+        "type": "rpc",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 5,
+        "sizeY": 4.5,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "initialValue": 2200,
+            "getValueMethod": "getValue",
+            "setValueMethod": "XBe10xeaw8fpF6bqRr7M_color",
+            "title": "Color Control",
+            "minValue": 2200,
+            "maxValue": 4200
+          },
+          "title": "New Knob Control",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 2,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "0fe9289b-bc4c-612f-6548-801f5d74c971"
+          ]
+        },
+        "row": 0,
+        "col": 0,
+        "id": "968181b7-f325-426f-a17c-0eb1dfbc39e6"
+      },
+      "d374ca29-91d8-6bdf-2ea0-50dd7f920f08": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "knob_control",
+        "type": "rpc",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 5,
+        "sizeY": 4.5,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "minValue": 2200,
+            "title": "Color Control",
+            "getValueMethod": "getValue",
+            "setValueMethod": "ZsaUJIHhsCDmobiHcc3u_color",
+            "maxValue": 4200,
+            "initialValue": 2200
+          },
+          "title": "New Knob Control",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 2,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "dd732699-6e08-908f-7007-a5e33aca5119"
+          ]
+        },
+        "row": 0,
+        "col": 0,
+        "id": "d374ca29-91d8-6bdf-2ea0-50dd7f920f08"
+      },
+      "77c4f373-ccbf-a7e8-0874-b3215ff7e9dd": {
+        "isSystemType": true,
+        "bundleAlias": "control_widgets",
+        "typeAlias": "knob_control",
+        "type": "rpc",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 5,
+        "sizeY": 4.5,
+        "config": {
+          "targetDeviceAliases": [],
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "0px",
+          "settings": {
+            "requestTimeout": 500,
+            "initialValue": 2200,
+            "title": "Color Control",
+            "getValueMethod": "getValue",
+            "setValueMethod": "8aTocC8taPVNsYRKLjWz_color",
+            "minValue": 2200,
+            "maxValue": 4200
+          },
+          "title": "New Knob Control",
+          "dropShadow": true,
+          "enableFullscreen": false,
+          "widgetStyle": {},
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "useDashboardTimewindow": true,
+          "showLegend": false,
+          "actions": {},
+          "decimals": 2,
+          "datasources": [],
+          "targetDeviceAliasIds": [
+            "4347a188-387e-f044-bd70-acde83331a80"
+          ]
+        },
+        "row": 0,
+        "col": 0,
+        "id": "77c4f373-ccbf-a7e8-0874-b3215ff7e9dd"
+      },
+      "0647d4dd-1379-c22b-b9b3-3b727ab89b08": {
+        "isSystemType": true,
+        "bundleAlias": "analogue_gauges",
+        "typeAlias": "temperature_radial_gauge_canvas_gauges",
+        "type": "latest",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 6,
+        "sizeY": 5,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "name": null,
+              "entityAliasId": "0fe9289b-bc4c-612f-6548-801f5d74c971",
+              "filterId": null,
+              "dataKeys": [
+                {
+                  "name": "color_temp",
+                  "type": "timeseries",
+                  "label": "color_temp",
+                  "color": "#2196f3",
+                  "settings": {},
+                  "_hash": 0.37639214924479314
+                }
+              ]
+            }
+          ],
+          "timewindow": {
+            "realtime": {
+              "timewindowMs": 60000
+            }
+          },
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "8px",
+          "settings": {
+            "ticksAngle": 225,
+            "showBorder": true,
+            "defaultColor": "#e65100",
+            "highlights": [
+              {
+                "from": 2200,
+                "color": "#ffc500",
+                "to": 2700
+              },
+              {
+                "from": 2700,
+                "to": 3700,
+                "color": "rgba(255, 255, 255, 0.83)"
+              },
+              {
+                "from": 3700,
+                "to": 4200,
+                "color": "#38a5fc"
+              }
+            ],
+            "showUnitTitle": true,
+            "colorPlate": "#cfd8dc",
+            "colorMajorTicks": "#444",
+            "colorMinorTicks": "#666",
+            "minorTicks": 2,
+            "valueInt": 3,
+            "highlightsWidth": 15,
+            "valueBox": true,
+            "animation": true,
+            "animationDuration": 1000,
+            "animationRule": "bounce",
+            "colorNeedleShadowUp": "rgba(2, 255, 255, 0)",
+            "colorNeedleShadowDown": "rgba(188, 143, 143, 0.78)",
+            "numbersFont": {
+              "family": "Roboto",
+              "size": 20,
+              "style": "normal",
+              "weight": "normal",
+              "color": "#263238"
+            },
+            "titleFont": {
+              "family": "Roboto",
+              "size": 24,
+              "style": "normal",
+              "weight": "normal",
+              "color": "#263238"
+            },
+            "unitsFont": {
+              "family": "Roboto",
+              "size": 28,
+              "style": "normal",
+              "weight": "500",
+              "color": "#616161"
+            },
+            "valueFont": {
+              "family": "Segment7Standard",
+              "size": 30,
+              "style": "normal",
+              "weight": "normal",
+              "shadowColor": "rgba(0, 0, 0, 0.49)",
+              "color": "#444"
+            },
+            "colorValueBoxRect": "#888",
+            "colorValueBoxRectEnd": "#666",
+            "colorValueBoxBackground": "#babab2",
+            "colorValueBoxShadow": "rgba(0,0,0,1)",
+            "unitTitle": "Color temperature",
+            "minValue": 2200,
+            "maxValue": 4200,
+            "needleCircleSize": 7,
+            "startAngle": 67.5,
+            "majorTicksCount": 8
+          },
+          "title": "New Temperature radial gauge",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "widgetStyle": {},
+          "noDataDisplayMessage": "",
+          "showLegend": false
+        },
+        "row": 0,
+        "col": 0,
+        "id": "0647d4dd-1379-c22b-b9b3-3b727ab89b08"
+      },
+      "6b0c984b-9f04-eb74-9fc6-95072bef277b": {
+        "isSystemType": true,
+        "bundleAlias": "analogue_gauges",
+        "typeAlias": "temperature_radial_gauge_canvas_gauges",
+        "type": "latest",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 6,
+        "sizeY": 5,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "name": null,
+              "entityAliasId": "dd732699-6e08-908f-7007-a5e33aca5119",
+              "filterId": null,
+              "dataKeys": [
+                {
+                  "name": "color_temp",
+                  "type": "timeseries",
+                  "label": "color_temp",
+                  "color": "#2196f3",
+                  "settings": {},
+                  "_hash": 0.37639214924479314
+                }
+              ]
+            }
+          ],
+          "timewindow": {
+            "realtime": {
+              "timewindowMs": 60000
+            }
+          },
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "8px",
+          "settings": {
+            "ticksAngle": 225,
+            "showBorder": true,
+            "defaultColor": "#e65100",
+            "highlights": [
+              {
+                "from": 2200,
+                "color": "#ffc500",
+                "to": 2700
+              },
+              {
+                "from": 2700,
+                "to": 3700,
+                "color": "rgba(255, 255, 255, 0.83)"
+              },
+              {
+                "from": 3700,
+                "to": 4200,
+                "color": "#38a5fc"
+              }
+            ],
+            "showUnitTitle": true,
+            "colorPlate": "#cfd8dc",
+            "colorMajorTicks": "#444",
+            "colorMinorTicks": "#666",
+            "minorTicks": 2,
+            "valueInt": 3,
+            "highlightsWidth": 15,
+            "valueBox": true,
+            "animation": true,
+            "animationDuration": 1000,
+            "animationRule": "bounce",
+            "colorNeedleShadowUp": "rgba(2, 255, 255, 0)",
+            "colorNeedleShadowDown": "rgba(188, 143, 143, 0.78)",
+            "numbersFont": {
+              "family": "Roboto",
+              "size": 20,
+              "style": "normal",
+              "weight": "normal",
+              "color": "#263238"
+            },
+            "titleFont": {
+              "family": "Roboto",
+              "size": 24,
+              "style": "normal",
+              "weight": "normal",
+              "color": "#263238"
+            },
+            "unitsFont": {
+              "family": "Roboto",
+              "size": 28,
+              "style": "normal",
+              "weight": "500",
+              "color": "#616161"
+            },
+            "valueFont": {
+              "family": "Segment7Standard",
+              "size": 30,
+              "style": "normal",
+              "weight": "normal",
+              "shadowColor": "rgba(0, 0, 0, 0.49)",
+              "color": "#444"
+            },
+            "colorValueBoxRect": "#888",
+            "colorValueBoxRectEnd": "#666",
+            "colorValueBoxBackground": "#babab2",
+            "colorValueBoxShadow": "rgba(0,0,0,1)",
+            "unitTitle": "Color temperature",
+            "minValue": 2200,
+            "maxValue": 4200,
+            "needleCircleSize": 7,
+            "startAngle": 67.5,
+            "majorTicksCount": 8
+          },
+          "title": "New Temperature radial gauge",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "widgetStyle": {},
+          "noDataDisplayMessage": "",
+          "showLegend": false
+        },
+        "row": 0,
+        "col": 0,
+        "id": "6b0c984b-9f04-eb74-9fc6-95072bef277b"
+      },
+      "e9d3cca2-f64c-62d2-3392-f3b7fa0ebc40": {
+        "isSystemType": true,
+        "bundleAlias": "analogue_gauges",
+        "typeAlias": "temperature_radial_gauge_canvas_gauges",
+        "type": "latest",
+        "title": "New widget",
+        "image": null,
+        "description": null,
+        "sizeX": 6,
+        "sizeY": 5,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "name": null,
+              "entityAliasId": "4347a188-387e-f044-bd70-acde83331a80",
+              "filterId": null,
+              "dataKeys": [
+                {
+                  "name": "color_temp",
+                  "type": "timeseries",
+                  "label": "color_temp",
+                  "color": "#2196f3",
+                  "settings": {},
+                  "_hash": 0.37639214924479314
+                }
+              ]
+            }
+          ],
+          "timewindow": {
+            "realtime": {
+              "timewindowMs": 60000
+            }
+          },
+          "showTitle": false,
+          "backgroundColor": "#e6e7e8",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "8px",
+          "settings": {
+            "ticksAngle": 225,
+            "showBorder": true,
+            "defaultColor": "#e65100",
+            "highlights": [
+              {
+                "from": 2200,
+                "color": "#ffc500",
+                "to": 2700
+              },
+              {
+                "from": 2700,
+                "to": 3700,
+                "color": "rgba(255, 255, 255, 0.83)"
+              },
+              {
+                "from": 3700,
+                "to": 4200,
+                "color": "#38a5fc"
+              }
+            ],
+            "showUnitTitle": true,
+            "colorPlate": "#cfd8dc",
+            "colorMajorTicks": "#444",
+            "colorMinorTicks": "#666",
+            "minorTicks": 2,
+            "valueInt": 3,
+            "highlightsWidth": 15,
+            "valueBox": true,
+            "animation": true,
+            "animationDuration": 1000,
+            "animationRule": "bounce",
+            "colorNeedleShadowUp": "rgba(2, 255, 255, 0)",
+            "colorNeedleShadowDown": "rgba(188, 143, 143, 0.78)",
+            "numbersFont": {
+              "family": "Roboto",
+              "size": 20,
+              "style": "normal",
+              "weight": "normal",
+              "color": "#263238"
+            },
+            "titleFont": {
+              "family": "Roboto",
+              "size": 24,
+              "style": "normal",
+              "weight": "normal",
+              "color": "#263238"
+            },
+            "unitsFont": {
+              "family": "Roboto",
+              "size": 28,
+              "style": "normal",
+              "weight": "500",
+              "color": "#616161"
+            },
+            "valueFont": {
+              "family": "Segment7Standard",
+              "size": 30,
+              "style": "normal",
+              "weight": "normal",
+              "shadowColor": "rgba(0, 0, 0, 0.49)",
+              "color": "#444"
+            },
+            "colorValueBoxRect": "#888",
+            "colorValueBoxRectEnd": "#666",
+            "colorValueBoxBackground": "#babab2",
+            "colorValueBoxShadow": "rgba(0,0,0,1)",
+            "unitTitle": "Color temperature",
+            "minValue": 2200,
+            "maxValue": 4200,
+            "needleCircleSize": 7,
+            "startAngle": 67.5,
+            "majorTicksCount": 8
+          },
+          "title": "New Temperature radial gauge",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "widgetStyle": {},
+          "noDataDisplayMessage": "",
+          "showLegend": false
+        },
+        "row": 0,
+        "col": 0,
+        "id": "e9d3cca2-f64c-62d2-3392-f3b7fa0ebc40"
+      }
+    },
+    "states": {
+      "default": {
+        "name": "Light",
+        "root": true,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "bb183501-a52d-f03f-3f13-7444911fddb6": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 8,
+                "col": 2
+              },
+              "3e02906a-fcab-13ac-6db8-cd431a153fe6": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 8,
+                "col": 0
+              },
+              "a853bee1-d6d5-9cd4-df6d-268c10af9be9": {
+                "sizeX": 4,
+                "sizeY": 2,
+                "row": 4,
+                "col": 0
+              },
+              "aaed2273-4f48-0282-c812-40c2a7576529": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 8,
+                "col": 7
+              },
+              "bd26e6ce-8f4d-6243-cc91-ea9cc1c6c75b": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 8,
+                "col": 5
+              },
+              "18429f9f-123d-9c5b-c98b-139766ea9262": {
+                "sizeX": 4,
+                "sizeY": 2,
+                "row": 4,
+                "col": 5
+              },
+              "932fafd4-52c0-35cb-1a92-5bd1fbe3f6bb": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 8,
+                "col": 10
+              },
+              "c06a38ac-ce17-3ef2-a7da-cca427e64c36": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 8,
+                "col": 12
+              },
+              "faeb64c8-3a65-c0e8-407a-7f2920ff9068": {
+                "sizeX": 4,
+                "sizeY": 2,
+                "row": 4,
+                "col": 10
+              },
+              "c847c7af-61ab-bd35-c071-885a41e57b23": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 6,
+                "col": 0
+              },
+              "bc0a0fb0-589e-de61-7efb-380ff27fc7ba": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 6,
+                "col": 5
+              },
+              "6585449a-3013-6893-6ea6-d94748008f52": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 6,
+                "col": 10
+              },
+              "968181b7-f325-426f-a17c-0eb1dfbc39e6": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 6,
+                "col": 2
+              },
+              "d374ca29-91d8-6bdf-2ea0-50dd7f920f08": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 6,
+                "col": 7
+              },
+              "77c4f373-ccbf-a7e8-0874-b3215ff7e9dd": {
+                "sizeX": 2,
+                "sizeY": 2,
+                "row": 6,
+                "col": 12
+              },
+              "0647d4dd-1379-c22b-b9b3-3b727ab89b08": {
+                "sizeX": 4,
+                "sizeY": 4,
+                "row": 0,
+                "col": 0
+              },
+              "6b0c984b-9f04-eb74-9fc6-95072bef277b": {
+                "sizeX": 4,
+                "sizeY": 4,
+                "row": 0,
+                "col": 5
+              },
+              "e9d3cca2-f64c-62d2-3392-f3b7fa0ebc40": {
+                "sizeX": 4,
+                "sizeY": 4,
+                "row": 0,
+                "col": 10
+              }
+            },
+            "gridSettings": {
+              "backgroundColor": "#eeeeee",
+              "columns": 24,
+              "margin": 10,
+              "backgroundSizeMode": "100%"
+            }
+          }
+        }
+      }
+    },
+    "entityAliases": {
+      "0fe9289b-bc4c-612f-6548-801f5d74c971": {
+        "id": "0fe9289b-bc4c-612f-6548-801f5d74c971",
+        "alias": "Light Sensor 1",
+        "filter": {
+          "type": "singleEntity",
+          "resolveMultiple": false,
+          "singleEntity": {
+            "entityType": "DEVICE",
+            "id": "a95099c0-4dd4-11ec-a7fc-35454323bc15"
+          }
+        }
+      },
+      "dd732699-6e08-908f-7007-a5e33aca5119": {
+        "id": "dd732699-6e08-908f-7007-a5e33aca5119",
+        "alias": "Light Sensor 2",
+        "filter": {
+          "type": "singleEntity",
+          "resolveMultiple": false,
+          "singleEntity": {
+            "entityType": "DEVICE",
+            "id": "8d5b1ca0-4ed2-11ec-96b5-35454323bc15"
+          }
+        }
+      },
+      "4347a188-387e-f044-bd70-acde83331a80": {
+        "id": "4347a188-387e-f044-bd70-acde83331a80",
+        "alias": "Light Sensor 3",
+        "filter": {
+          "type": "singleEntity",
+          "resolveMultiple": false,
+          "singleEntity": {
+            "entityType": "DEVICE",
+            "id": "9350fda0-4ed2-11ec-96b5-35454323bc15"
+          }
+        }
+      }
+    },
+    "filters": {},
+    "timewindow": {
+      "displayValue": "",
+      "hideInterval": false,
+      "hideAggregation": false,
+      "hideAggInterval": false,
+      "hideTimezone": false,
+      "selectedTab": 0,
+      "realtime": {
+        "realtimeType": 0,
+        "interval": 1000,
+        "timewindowMs": 60000,
+        "quickInterval": "CURRENT_DAY"
+      },
+      "history": {
+        "historyType": 0,
+        "interval": 1000,
+        "timewindowMs": 60000,
+        "fixedTimewindow": {
+          "startTimeMs": 1637866537878,
+          "endTimeMs": 1637952937878
+        },
+        "quickInterval": "CURRENT_DAY"
+      },
+      "aggregation": {
+        "type": "AVG",
+        "limit": 25000
+      }
+    },
+    "settings": {
+      "stateControllerId": "entity",
+      "showTitle": false,
+      "showDashboardsSelect": true,
+      "showEntitiesSelect": true,
+      "showDashboardTimewindow": true,
+      "showDashboardExport": true,
+      "toolbarAlwaysOpen": true
+    }
+  },
+  "name": "Light"
+}

@@ -1,0 +1,62 @@
+{
+  "ruleChain": {
+    "additionalInfo": {
+      "description": ""
+    },
+    "name": "Temperature Major Alarm",
+    "type": "CORE",
+    "firstRuleNodeId": null,
+    "root": false,
+    "debugMode": false,
+    "configuration": null
+  },
+  "metadata": {
+    "firstNodeIndex": 0,
+    "nodes": [
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 416,
+          "layoutY": 156
+        },
+        "type": "org.thingsboard.rule.engine.filter.TbJsFilterNode",
+        "name": "Chececk negatif or positif temp",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "if (msg.temperature < 0)\n    return true\nelse\n    return false"
+        }
+      }
+    ],
+    "connections": null,
+    "ruleChainConnections": [
+      {
+        "fromIndex": 0,
+        "targetRuleChainId": {
+          "entityType": "RULE_CHAIN",
+          "id": "2e2f1b70-4fca-11ec-96b5-35454323bc15"
+        },
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 749,
+          "layoutY": 92,
+          "ruleChainNodeId": "rule-chain-node-3"
+        },
+        "type": "True"
+      },
+      {
+        "fromIndex": 0,
+        "targetRuleChainId": {
+          "entityType": "RULE_CHAIN",
+          "id": "03b91a90-506e-11ec-96b5-35454323bc15"
+        },
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 748,
+          "layoutY": 202,
+          "ruleChainNodeId": "rule-chain-node-4"
+        },
+        "type": "False"
+      }
+    ]
+  }
+}

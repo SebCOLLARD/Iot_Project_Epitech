@@ -1,0 +1,458 @@
+{
+  "title": "Fluids",
+  "image": null,
+  "mobileHide": false,
+  "mobileOrder": null,
+  "configuration": {
+    "description": "",
+    "widgets": {
+      "b6fa9a0e-45e5-7438-4ec2-cde56de8bb9e": {
+        "isSystemType": true,
+        "bundleAlias": "analogue_gauges",
+        "typeAlias": "radial_gauge_canvas_gauges",
+        "type": "latest",
+        "title": "Radial gauge",
+        "sizeX": 12,
+        "sizeY": 10,
+        "row": 0,
+        "col": 4,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "name": null,
+              "entityAliasId": "af6b89e2-207d-86d9-3261-948b527bfbb0",
+              "filterId": null,
+              "dataKeys": [
+                {
+                  "name": "flow_in_ml_per_s",
+                  "label": "flow_in_ml_per_s",
+                  "type": "timeseries",
+                  "color": "#2196f3",
+                  "settings": {},
+                  "_hash": 0.5657240425671873,
+                  "units": null,
+                  "decimals": null,
+                  "funcBody": null,
+                  "usePostProcessing": true,
+                  "postFuncBody": "if (value < 0)\n    return '';\nreturn value;"
+                }
+              ]
+            }
+          ],
+          "timewindow": {
+            "realtime": {
+              "timewindowMs": 60000
+            }
+          },
+          "showTitle": false,
+          "backgroundColor": "rgb(255, 255, 255)",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "8px",
+          "settings": {
+            "startAngle": 45,
+            "ticksAngle": 270,
+            "showBorder": true,
+            "defaultColor": "#e65100",
+            "needleCircleSize": 10,
+            "highlights": [],
+            "showUnitTitle": false,
+            "colorPlate": "#fff",
+            "colorMajorTicks": "#444",
+            "colorMinorTicks": "#666",
+            "valueInt": 3,
+            "highlightsWidth": 15,
+            "valueBox": true,
+            "animation": true,
+            "animationDuration": 500,
+            "animationRule": "cycle",
+            "colorNeedleShadowUp": "rgba(2, 255, 255, 0)",
+            "numbersFont": {
+              "family": "Roboto",
+              "size": 18,
+              "style": "normal",
+              "weight": "500",
+              "color": "#616161"
+            },
+            "titleFont": {
+              "family": "Roboto",
+              "size": 24,
+              "style": "normal",
+              "weight": "500",
+              "color": "#888"
+            },
+            "unitsFont": {
+              "family": "Roboto",
+              "size": 22,
+              "style": "normal",
+              "weight": "500",
+              "color": "#616161"
+            },
+            "valueFont": {
+              "family": "Segment7Standard",
+              "size": 36,
+              "style": "normal",
+              "weight": "normal",
+              "shadowColor": "rgba(0, 0, 0, 0.49)",
+              "color": "#444"
+            },
+            "minValue": 0,
+            "colorNeedleShadowDown": "rgba(188,143,143,0.45)",
+            "colorValueBoxRect": "#888",
+            "colorValueBoxRectEnd": "#666",
+            "colorValueBoxBackground": "#babab2",
+            "colorValueBoxShadow": "rgba(0,0,0,1)",
+            "minorTicks": 2,
+            "maxValue": 160,
+            "majorTicksCount": 8
+          },
+          "title": "Radial gauge",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "widgetStyle": {},
+          "units": "ml/s",
+          "decimals": 2,
+          "noDataDisplayMessage": "Invalid",
+          "showLegend": false
+        },
+        "id": "b6fa9a0e-45e5-7438-4ec2-cde56de8bb9e"
+      },
+      "a2377c3a-31e5-d95c-cf3c-a0d89d270533": {
+        "isSystemType": true,
+        "bundleAlias": "charts",
+        "typeAlias": "basic_timeseries",
+        "type": "timeseries",
+        "title": "Timeseries Line Chart",
+        "sizeX": 16,
+        "sizeY": 10,
+        "row": 0,
+        "col": 2,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "name": null,
+              "entityAliasId": "af6b89e2-207d-86d9-3261-948b527bfbb0",
+              "filterId": null,
+              "dataKeys": [
+                {
+                  "name": "flow_in_ml_per_s",
+                  "label": "flow_in_ml_per_s",
+                  "type": "timeseries",
+                  "color": "#2196f3",
+                  "settings": {
+                    "showLines": true,
+                    "fillLines": false,
+                    "showPoints": false,
+                    "showPointShape": "circle",
+                    "pointShapeFormatter": "var size = radius * Math.sqrt(Math.PI) / 2;\nctx.moveTo(x - size, y - size);\nctx.lineTo(x + size, y + size);\nctx.moveTo(x - size, y + size);\nctx.lineTo(x + size, y - size);",
+                    "showPointsLineWidth": 5,
+                    "showPointsRadius": 3,
+                    "axisPosition": "left",
+                    "comparisonSettings": {
+                      "showValuesForComparison": true
+                    }
+                  },
+                  "_hash": 0.5657240425671873,
+                  "units": null,
+                  "decimals": null,
+                  "funcBody": null,
+                  "usePostProcessing": true,
+                  "postFuncBody": "if (value < 0)\n    return '';\nreturn value;"
+                }
+              ]
+            }
+          ],
+          "timewindow": {
+            "realtime": {
+              "timewindowMs": 60000
+            }
+          },
+          "showTitle": true,
+          "backgroundColor": "#fff",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "8px",
+          "settings": {
+            "shadowSize": 4,
+            "fontColor": "#545454",
+            "fontSize": 10,
+            "xaxis": {
+              "showLabels": true,
+              "color": "#545454"
+            },
+            "yaxis": {
+              "showLabels": true,
+              "color": "#545454"
+            },
+            "grid": {
+              "color": "#545454",
+              "tickColor": "#DDDDDD",
+              "verticalLines": true,
+              "horizontalLines": true,
+              "outlineWidth": 1
+            },
+            "stack": false,
+            "tooltipIndividual": false,
+            "showTooltip": true,
+            "timeForComparison": "previousInterval",
+            "xaxisSecond": {
+              "axisPosition": "top",
+              "showLabels": true
+            }
+          },
+          "title": "Timeseries Line Chart",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400
+          },
+          "mobileHeight": null,
+          "useDashboardTimewindow": true
+        },
+        "id": "a2377c3a-31e5-d95c-cf3c-a0d89d270533"
+      },
+      "9b6e3d8c-9263-fca7-2d69-f33b4db13898": {
+        "isSystemType": true,
+        "bundleAlias": "cards",
+        "typeAlias": "timeseries_table",
+        "type": "timeseries",
+        "title": "Timeseries table",
+        "sizeX": 16,
+        "sizeY": 13,
+        "row": 0,
+        "col": 2,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "entityAliasId": "e5dab625-3502-f20c-af47-a8f09f272eac",
+              "dataKeys": [
+                {
+                  "name": "color",
+                  "label": "color",
+                  "type": "timeseries",
+                  "color": "#2196f3",
+                  "settings": {},
+                  "_hash": 0.9488872978886816
+                }
+              ]
+            }
+          ],
+          "timewindow": {
+            "realtime": {
+              "interval": 1000,
+              "timewindowMs": 60000
+            },
+            "aggregation": {
+              "type": "NONE",
+              "limit": 200
+            }
+          },
+          "showTitle": true,
+          "backgroundColor": "rgb(255, 255, 255)",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "8px",
+          "settings": {
+            "showTimestamp": true,
+            "displayPagination": true,
+            "defaultPageSize": 10
+          },
+          "title": "Timeseries table",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400,
+            "padding": "5px 10px 5px 10px"
+          },
+          "useDashboardTimewindow": false,
+          "showLegend": false,
+          "widgetStyle": {},
+          "actions": {},
+          "showTitleIcon": false,
+          "iconColor": "rgba(0, 0, 0, 0.87)",
+          "iconSize": "24px"
+        },
+        "id": "9b6e3d8c-9263-fca7-2d69-f33b4db13898"
+      },
+      "6ed33e08-e615-8c81-53a5-ec5ff9fb36a8": {
+        "isSystemType": true,
+        "bundleAlias": "cards",
+        "typeAlias": "timeseries_table",
+        "type": "timeseries",
+        "title": "Timeseries table",
+        "sizeX": 16,
+        "sizeY": 13,
+        "row": 0,
+        "col": 2,
+        "config": {
+          "datasources": [
+            {
+              "type": "entity",
+              "entityAliasId": "d7cd6c30-fa88-af8b-7e91-d30b13454bcb",
+              "dataKeys": [
+                {
+                  "name": "substance",
+                  "label": "substance",
+                  "type": "timeseries",
+                  "color": "#2196f3",
+                  "settings": {},
+                  "_hash": 0.8535677721425282
+                }
+              ]
+            }
+          ],
+          "timewindow": {
+            "realtime": {
+              "interval": 1000,
+              "timewindowMs": 60000
+            },
+            "aggregation": {
+              "type": "NONE",
+              "limit": 200
+            }
+          },
+          "showTitle": true,
+          "backgroundColor": "rgb(255, 255, 255)",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "padding": "8px",
+          "settings": {
+            "showTimestamp": true,
+            "displayPagination": true,
+            "defaultPageSize": 10
+          },
+          "title": "Timeseries table",
+          "dropShadow": true,
+          "enableFullscreen": true,
+          "titleStyle": {
+            "fontSize": "16px",
+            "fontWeight": 400,
+            "padding": "5px 10px 5px 10px"
+          },
+          "useDashboardTimewindow": false,
+          "showLegend": false,
+          "widgetStyle": {},
+          "actions": {},
+          "showTitleIcon": false,
+          "iconColor": "rgba(0, 0, 0, 0.87)",
+          "iconSize": "24px"
+        },
+        "id": "6ed33e08-e615-8c81-53a5-ec5ff9fb36a8"
+      }
+    },
+    "states": {
+      "default": {
+        "name": "Fluids",
+        "root": true,
+        "layouts": {
+          "main": {
+            "widgets": {
+              "b6fa9a0e-45e5-7438-4ec2-cde56de8bb9e": {
+                "sizeX": 8,
+                "sizeY": 4,
+                "row": 0,
+                "col": 6
+              },
+              "a2377c3a-31e5-d95c-cf3c-a0d89d270533": {
+                "sizeX": 8,
+                "sizeY": 5,
+                "mobileHeight": null,
+                "row": 4,
+                "col": 6
+              },
+              "9b6e3d8c-9263-fca7-2d69-f33b4db13898": {
+                "sizeX": 6,
+                "sizeY": 9,
+                "row": 0,
+                "col": 0
+              },
+              "6ed33e08-e615-8c81-53a5-ec5ff9fb36a8": {
+                "sizeX": 6,
+                "sizeY": 9,
+                "row": 0,
+                "col": 14
+              }
+            },
+            "gridSettings": {
+              "backgroundColor": "#eeeeee",
+              "columns": 24,
+              "margin": 10,
+              "backgroundSizeMode": "100%"
+            }
+          }
+        }
+      }
+    },
+    "entityAliases": {
+      "af6b89e2-207d-86d9-3261-948b527bfbb0": {
+        "id": "af6b89e2-207d-86d9-3261-948b527bfbb0",
+        "alias": "Flow Sensor",
+        "filter": {
+          "type": "singleEntity",
+          "singleEntity": {
+            "entityType": "DEVICE",
+            "id": "a5c87280-4dd6-11ec-a7fc-35454323bc15"
+          },
+          "resolveMultiple": false
+        }
+      },
+      "e5dab625-3502-f20c-af47-a8f09f272eac": {
+        "id": "e5dab625-3502-f20c-af47-a8f09f272eac",
+        "alias": "Ink Sensor",
+        "filter": {
+          "type": "singleEntity",
+          "singleEntity": {
+            "entityType": "DEVICE",
+            "id": "185beb20-4dd6-11ec-a7fc-35454323bc15"
+          },
+          "resolveMultiple": false
+        }
+      },
+      "d7cd6c30-fa88-af8b-7e91-d30b13454bcb": {
+        "id": "d7cd6c30-fa88-af8b-7e91-d30b13454bcb",
+        "alias": "Substance sensor",
+        "filter": {
+          "type": "singleEntity",
+          "singleEntity": {
+            "entityType": "DEVICE",
+            "id": "ad628da0-4dd6-11ec-a7fc-35454323bc15"
+          },
+          "resolveMultiple": false
+        }
+      }
+    },
+    "filters": {},
+    "timewindow": {
+      "hideInterval": false,
+      "hideAggregation": false,
+      "hideAggInterval": false,
+      "hideTimezone": false,
+      "selectedTab": 0,
+      "realtime": {
+        "realtimeType": 0,
+        "timewindowMs": 300000,
+        "quickInterval": "CURRENT_DAY",
+        "interval": 5000
+      },
+      "aggregation": {
+        "type": "AVG",
+        "limit": 25000
+      }
+    },
+    "settings": {
+      "stateControllerId": "entity",
+      "showTitle": false,
+      "showDashboardsSelect": true,
+      "showEntitiesSelect": true,
+      "showDashboardTimewindow": true,
+      "showDashboardExport": true,
+      "toolbarAlwaysOpen": true
+    }
+  },
+  "name": "Fluids"
+}
