@@ -48,7 +48,13 @@ Table of contents
     - [System Administrator](#system-administrator)
     - [Tenant Administrator](#tenant-administrator)
     - [Customer User](#customer-user)
-  
+- [Thinksboard Intern Rules](#thinksboard-intern-rules)
+  - [Humidity Alarm](#humidity-alarm)
+  - [Temperature Critcal Alarm](#temperature-critcal-alarm)
+  - [Temperature Critcal Alarm Cold](#temeperature-major-alamr-cold)
+  - [Temperature Critcal Alarm Hot](#temeperature-major-alamr-hot)
+  - [Delta Temperature](#delta-temperature)
+  - [Alarm Specific Temperature](#alarm-specific-temperature)
 
 
 -----------
@@ -181,3 +187,28 @@ Password: `tenant`
 ### Customer User
 Email: `customer@thingsboard.org`
 Password: `customer`
+
+# Thingsboard Intern Rules
+Internily to Thongsboard we create rules to verifying the data.
+When the data is note corresponding it's create an alarm.
+Depending on the alarm type the alarm severity change.
+
+## Humidity Alarm
+The humidity alarm verify of the humidity is above 90%.
+
+## Temperature Critcal Alarm
+This rule create an alarm when the temperature is invalid.
+Invalid temperature is when the temperature is when the temperature is below -10°C and above 35°C.
+
+## Temeperature Major Alamr Cold
+When the temperature is between -10°C and -5°C create an alarm.
+
+## Temeperature Major Alamr Hot
+When the temperature is between 30°C and 35°C create an alarm.
+
+## Delta Temperature
+Calculate the delta between the temperature of 10 minutes ago and now.
+When the result of the delta is above 20°C an alarm is created.
+
+## Alarm Specific Temperature
+When the temperature equal to 0 an alarm is created.
