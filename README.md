@@ -113,7 +113,7 @@ There are 3 main places to configure the project:
 - 3. The `./docker-compose.yml` file for the Thingsboard server's configuration.
 
 ## Interface
-[](https://ibb.co/7R6hZds)
+![img](https://ibb.co/7R6hZds)
 
 # Thingsboard server
 The thingsboard server is deployed using Docker Compose.
