@@ -194,18 +194,17 @@ When the data is not corresponding it's create an alarm via the rules.
 Depending on the alarm type the alarm severity change.
 
 ### Humidity Alarm
-The humidity alarm verify if the humidity is above 90%.
-If its true we create an alarm.
+When the humidity is above 90% an alarm is created.
 
 ### Temperature Critcal Alarm
 This rule create an alarm when the temperature is invalid.
 Invalid temperature is when the temperature is below -10°C and above 35°C.
 
 ### Temeperature Major Alamr Cold
-When the temperature is between -10°C and -5°C we create an alarm.
+When the temperature is between -10°C and -5°C an alarm is created.
 
 ### Temeperature Major Alamr Hot
-When the temperature is between 30°C and 35°C we create an alarm.
+When the temperature is between 30°C and 35°C an alarm is created.
 
 ### Delta Temperature
 Calculate the delta between the temperature of 10 minutes ago and last temperature.
