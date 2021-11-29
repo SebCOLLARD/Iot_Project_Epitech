@@ -55,6 +55,10 @@ Table of contents
   - [Temperature Critcal Alarm Hot](#temeperature-major-alamr-hot)
   - [Delta Temperature](#delta-temperature)
   - [Alarm Specific Temperature](#alarm-specific-temperature)
+- [Example Telemtry Data](#example-telemtry-data)
+  - [Temperature Data](#temperature-data)
+  - [Light Data](#light-data)
+  - [Fluid Data](#fluid-data)
 
 
 -----------
@@ -213,3 +217,31 @@ When the result of the delta is above 20°C an alarm is created.
 
 ### Alarm Specific Temperature
 When the temperature equal to 0 an alarm is created.
+
+# Example Telemtry Data
+All telemetry data is send to thingsboard in JSON format.
+
+### Temperature Data
+```json
+{
+  "temperature": 26.87,
+  "humidity": 58
+}
+```
+### Light Data
+```json
+{
+  "state": 1,
+  "led": 0,
+  "intensity": 67.18,
+  "color_temp": 3256
+}
+```
+### Fluid Data
+```json
+{
+  "color": "cyan",
+  "substance": "water",
+  "flow_in_ml_per_s": 11.98
+}
+```
