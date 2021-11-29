@@ -44,6 +44,10 @@ Table of contents
   - [Launch locally](#launch-locally)
   - [Deploy](#deploy)
   - [Configure the Thingsboard server from scratch](#configure-the-thingsboard-server-from-scratch)
+  - [Login to the Thingsboard server](#login-to-the-thingsboard-server)
+    - [System Administrator](#system-administrator)
+    - [Tenant Administrator](#tenant-administrator)
+    - [Customer User](#customer-user)
   
 
 
@@ -156,3 +160,15 @@ You can either deploy directly on your server by forwarding the port you want to
 ## Configure the Thingsboard server from scratch
 If you configure your own Thingsboard instance, you can use the files in `./Thingsboard/` to import dashboards and rules from this project.
 However, you will have to manually create the devices (a total of 9: 3 lights, 3 temperature sensors, 3 fluid sensors (1 of each kind)) and configure the GUI manually with the correct access tokens (cf. [this section](#configure-the-device-manager)).
+
+## Login to the Thingsboard server
+To access the Thingsboard instance, there are multiple users, with each their own credentials.
+### System Administrator
+Email: `sysadmin@thingsboard.org`
+Password: `sysadmin`
+### Tenant Administrator
+Email: `tenant@thingsboard.org`
+Password: `tenant`
+### Customer User
+Email: `customer@thingsboard.org`
+Password: `customer`
