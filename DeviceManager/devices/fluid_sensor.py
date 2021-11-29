@@ -30,6 +30,9 @@ class FluidSensor:
             trigger_args["seconds"] = 1
         self.default_trigger = IntervalTrigger(**trigger_args)
 
+    def close(self):
+        self.client.close()
+
     def gen_data(self) -> str:
         """
         Returns a JSON payload with random values.
@@ -75,7 +78,7 @@ class FluidSensor:
         """
         if data is None or data == "":
             data = self.gen_data()
-        self.client.post(self.token, data, self.get_callback(), timeout=10)
+        self.client.post(self.token, data, self.get_callback(), timeout=2)
 
     def change_job_params(self, new_json=None):
         """

@@ -20,7 +20,7 @@ class CoapThingsboardClient:
         """
         self._client: HelperClient = HelperClient(server=(base_url, COAP_PORT))
 
-    def __del__(self):
+    def close(self):
         self._client.close()
 
     def get(self, route, callback=None, timeout=None) -> Message:
@@ -35,7 +35,6 @@ class CoapThingsboardClient:
         Returns a `Message` instance containing the response.
         """
         res = self._client.get(route, callback=callback, timeout=timeout)
-        self._client.stop()
         return res
 
     def put(self, route, payload, callback=None, timeout=None) -> Message:
@@ -53,7 +52,6 @@ class CoapThingsboardClient:
         res = self._client.put(
             route, payload, callback=callback, timeout=timeout, **self._ct
         )
-        self._client.stop()
         return res
 
     def post(self, access_token, payload, callback=None, timeout=None) -> Message:
@@ -75,7 +73,6 @@ class CoapThingsboardClient:
             timeout=timeout,
             **self._ct
         )
-        self._client.stop()
         return res
 
     def delete(self, route, payload, callback=None, timeout=None) -> Message:
@@ -93,5 +90,4 @@ class CoapThingsboardClient:
         res = self._client.delete(
             route, payload, callback=callback, timeout=timeout, **self._ct
         )
-        self._client.stop()
         return res

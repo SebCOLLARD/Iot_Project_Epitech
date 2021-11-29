@@ -56,6 +56,9 @@ class QAppWithScheduler(QApplication):
         self.light_1.stopThread()
         self.light_2.stopThread()
         self.light_3.stopThread()
+        self.ink_sensor.close()
+        self.substance_sensor.close()
+        self.flow_sensor.close()
         self._sched.remove_all_jobs()
         self._sched.shutdown()
 
