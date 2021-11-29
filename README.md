@@ -38,6 +38,7 @@ Table of contents
     - [Install dependencies](#install-dependencies)
     - [Launch the program](#launch-the-program)
   - [Configure the Device Manager](#configure-the-device-manager)
+  - [Interface](#interface)
 - [Thingsboard server](#thingsboard-server)
   - [Launch locally](#launch-locally)
   - [Deploy](#deploy)
@@ -111,6 +112,9 @@ There are 3 main places to configure the project:
 - 2. The `./DeviceManager/config.py` file (or a `.env` file at the root of the repo, but it's only used for development settings, as it is not copied to the executable directory by cx_Freeze) that contains all the URLs, tokens, etc.
 - 3. The `./docker-compose.yml` file for the Thingsboard server's configuration.
 
+## Interface
+[](https://ibb.co/7R6hZds)
+
 # Thingsboard server
 The thingsboard server is deployed using Docker Compose.
 By default, the project uses a web deployment with public dashboards, hosted [here](http://thingsboard.matthieu-rochette.fr) (the server might not be available at the moment you read those lines, presumably because the project has become quite old).
@@ -126,4 +130,4 @@ docker-compose up
 
 **Make sure to configure the Device Manager to use the correct URL (in `./DeviceManager/config.py` or via a `./.env` file. For a local deployment, that would be `http://localhost:8080`.**
 ## Deploy
-You can either deploy directly on your server by forwarding the port you want to use in the `./docker-compose.yml` file, or put it behind a reverse proxy (example for NGINX in `./nginx.conf`.
+You can either deploy directly on your server by forwarding the port you want to use in the `./docker-compose.yml` file, or put it behind a reverse proxy (example for NGINX in `./nginx.conf`).
