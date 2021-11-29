@@ -4,8 +4,6 @@ Iot_Project_Epitech
 
 ---
 
----
-
 This project creates a graphical user interface emulating IoT devices that communicate with a [Thingsboard](https://thingsboard.io/) server.
 
 Authors
@@ -39,6 +37,9 @@ Table of contents
     - [Launch the program](#launch-the-program)
   - [Configure the Device Manager](#configure-the-device-manager)
   - [Interface](#interface)
+    - [Lights](#lights)
+    - [Temperature](#temperature)
+    - [Fluids](#fluids)
 - [Thingsboard server](#thingsboard-server)
   - [Launch locally](#launch-locally)
   - [Deploy](#deploy)
@@ -113,8 +114,18 @@ There are 3 main places to configure the project:
 - 3. The `./docker-compose.yml` file for the Thingsboard server's configuration.
 
 ## Interface
-![img](https://i.ibb.co/3MLKj9g/lights.png)
+The interface is compose of 3 tabs:
+- lights,
+- temperature,
+- fluids.
+### Lights
+![Lights interface](https://i.ibb.co/3MLKj9g/lights.png)
+### Temperature
+![Temperature interface](https://i.ibb.co/N79Y55s/Screenshot-5.png)
+### Fluids
+![Fluids interface](https://i.ibb.co/tJ1LW4W/Screenshot-6.png)
 
+---
 # Thingsboard server
 The thingsboard server is deployed using Docker Compose.
 By default, the project uses a web deployment with public dashboards, hosted [here](http://thingsboard.matthieu-rochette.fr) (the server might not be available at the moment you read those lines, presumably because the project has become quite old).
