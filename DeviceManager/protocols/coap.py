@@ -34,7 +34,9 @@ class CoapThingsboardClient:
 
         Returns a `Message` instance containing the response.
         """
-        return self._client.get(route, callback=callback, timeout=timeout)
+        res = self._client.get(route, callback=callback, timeout=timeout)
+        self._client.stop()
+        return res
 
     def put(self, route, payload, callback=None, timeout=None) -> Message:
         """
@@ -48,9 +50,11 @@ class CoapThingsboardClient:
 
         Returns a `Message` instance containing the response.
         """
-        return self._client.put(
+        res = self._client.put(
             route, payload, callback=callback, timeout=timeout, **self._ct
         )
+        self._client.stop()
+        return res
 
     def post(self, access_token, payload, callback=None, timeout=None) -> Message:
         """
@@ -64,13 +68,15 @@ class CoapThingsboardClient:
 
         Returns a `Message` instance containing the response.
         """
-        return self._client.post(
+        res = self._client.post(
             self.route_post.format(access_token=access_token),
             payload,
             callback=callback,
             timeout=timeout,
             **self._ct
         )
+        self._client.stop()
+        return res
 
     def delete(self, route, payload, callback=None, timeout=None) -> Message:
         """
@@ -84,6 +90,8 @@ class CoapThingsboardClient:
 
         Returns a `Message` instance containing the response.
         """
-        return self._client.delete(
+        res = self._client.delete(
             route, payload, callback=callback, timeout=timeout, **self._ct
         )
+        self._client.stop()
+        return res

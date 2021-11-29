@@ -47,15 +47,12 @@ class QAppWithScheduler(QApplication):
         self.temp_sensor_2 = TemperatureSensor(TEMP_2_TOKEN, self._sched)
         self.temp_sensor_3 = TemperatureSensor(TEMP_3_TOKEN, self._sched)
 
-    def exec(self):
-        """
-        Start the scheduler, execute the application and then join threads and shutdown the scheduler.
-        """
-
         self._sched.start()
 
-        super().exec()
-
+    def stop_all(self):
+        """
+        Stop all threads and shutdown the scheduler.
+        """
         self.light_1.stopThread()
         self.light_2.stopThread()
         self.light_3.stopThread()
@@ -114,4 +111,6 @@ def run_gui(args: list = None):
 
     # EXEC APP
     # ///////////////////////////////////////////////////////////////
-    sys.exit(app.exec())
+    app.exec()
+    app.stop_all()
+    sys.exit(0)

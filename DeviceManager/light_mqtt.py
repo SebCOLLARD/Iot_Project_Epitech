@@ -4,9 +4,8 @@ import json
 import threading
 
 import paho.mqtt.client as mqtt
-from apscheduler.schedulers import SchedulerAlreadyRunningError
-from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
+from apscheduler.schedulers.background import BackgroundScheduler
 
 from .devices import LightSensor
 from .config import THINGSBOARD_URL
@@ -35,18 +34,15 @@ class LightMqtt:
         self.topicRecived = topicRecived
         self.accessToken = access_token
         self.scheduler: BackgroundScheduler = BackgroundScheduler()
+        self.job = self.scheduler.add_job(
+            self.send, trigger=IntervalTrigger(seconds=LightMqtt._socketTimes)
+        )
         self.light = LightSensor()
         self.client = mqtt.Client()
         self.client.username_pw_set(username=self.accessToken)
         self.thread = threading.Thread(target=self.start)
+        self.scheduler.start()
         self.thread.start()
-
-    def __del__(self):
-        """
-        Stop the thread.
-        """
-        print("\n\n\n\nIN DEL\n\n\n\n")
-        self.stopThread()
 
     def send(self):
         """
@@ -96,19 +92,12 @@ class LightMqtt:
         self.client.connect(LightMqtt._ip, LightMqtt._port, 60)
         self.client.subscribe(self.topicRecived)
         self.client.on_message = self.receiver()
-        self.job = self.scheduler.add_job(
-            self.send, trigger=IntervalTrigger(seconds=LightMqtt._socketTimes)
-        )
-        try:
-            self.scheduler.start()
-        except SchedulerAlreadyRunningError:
-            pass
         self.client.loop_forever()
 
     def stopThread(self):
         """
         Stop all background processes.
         """
-        self.scheduler.remove_all_jobs()
+        self.scheduler.shutdown(wait=True)
         self.client.disconnect()
         self.thread.join()
