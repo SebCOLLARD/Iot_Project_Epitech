@@ -125,9 +125,14 @@ The interface is compose of 3 tabs:
 - fluids.
 ### Lights
 ![Lights interface](https://i.ibb.co/3MLKj9g/lights.png)
+The light dashboard in the GUI is a web view of the Thingsboard light dashboard.
+The dashboard controls the 3 light sensors:
+- Switch On/Off (controls only the electricity passed through the light)
+- Intensity controller
+- Color temperature controller
 ### Temperature
 ![Temperature interface](https://i.ibb.co/N79Y55s/Screenshot-5.png)
-The temperature dashboard in the GUI is a web view of the Thingsboard dashboard and is a representation of each data sent by each sensor.
+The temperature dashboard in the GUI is a web view of the Thingsboard Temperature dashboard and is a representation of each data sent by each sensor.
 The temperature and humidity data are both represented in a gauge and in a graph showing the variation.
 The 3 markers on the chart correspond to each sensor. You can click on any of these markers to view the details of the sensor data.
 ### Fluids
